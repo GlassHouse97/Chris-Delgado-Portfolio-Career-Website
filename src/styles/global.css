@@ -1,17 +1,18 @@
 :root {
   color-scheme: dark;
-  --ink: #f7f3e9;
-  --ink-muted: #aaaec0;
-  --night: #070a12;
-  --night-soft: #0e1321;
-  --panel: #121827;
-  --panel-high: #182033;
-  --line: rgba(247, 243, 233, 0.13);
-  --blue: #76d7ff;
-  --lime: #b8f36b;
-  --coral: #ff856e;
+  --ink: #f3f7ff;
+  --ink-muted: #9facc3;
+  --night: #07111f;
+  --night-soft: #0b1729;
+  --panel: #0f1c31;
+  --panel-high: #152641;
+  --line: rgba(190, 211, 244, 0.14);
+  --accent: #6ea8fe;
+  --accent-hover: #94c4ff;
+  --blue: #7cc8ff;
+  --coral: #ff8f80;
   --gold: #f5c968;
-  --purple: #b8a5ff;
+  --purple: #a8b4ff;
   --max: 1180px;
   --radius-sm: 12px;
   --radius: 20px;
@@ -36,8 +37,8 @@ body {
   min-width: 320px;
   color: var(--ink);
   background:
-    radial-gradient(circle at 86% 4%, rgba(118, 215, 255, 0.11), transparent 29rem),
-    radial-gradient(circle at 8% 38%, rgba(184, 243, 107, 0.07), transparent 25rem),
+    radial-gradient(circle at 86% 4%, rgba(124, 200, 255, 0.14), transparent 29rem),
+    radial-gradient(circle at 8% 38%, rgba(110, 168, 254, 0.1), transparent 25rem),
     var(--night);
   font-family: var(--font-sans);
   font-size: 17px;
@@ -60,7 +61,7 @@ body::before {
 
 ::selection {
   color: var(--night);
-  background: var(--lime);
+  background: var(--accent);
 }
 
 a {
@@ -191,14 +192,14 @@ h3 {
 }
 
 .button-primary {
-  border-color: var(--lime);
-  color: #10150a;
-  background: var(--lime);
+  border-color: var(--accent);
+  color: #07111f;
+  background: var(--accent);
 }
 
 .button-primary:hover {
-  border-color: #d0ff98;
-  background: #d0ff98;
+  border-color: var(--accent-hover);
+  background: var(--accent-hover);
 }
 
 .chip-list {
@@ -235,7 +236,7 @@ h3 {
   padding: 0.7rem 1rem;
   border-radius: 8px;
   color: var(--night);
-  background: var(--lime);
+  background: var(--accent);
   font-weight: 800;
   transform: translateY(-150%);
 }

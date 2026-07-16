@@ -10,12 +10,12 @@ const toolGroups = [
   },
   {
     label: "Building things",
-    accent: "var(--lime)",
+    accent: "var(--accent)",
     tools: ["Reflex", "HTML/CSS", "CLI tools", "Data modeling", "Automation", "ReportLab"],
   },
   {
     label: "Quality + delivery",
-    accent: "var(--coral)",
+    accent: "var(--purple)",
     tools: ["pytest", "unittest", "Git", "Docker", "Cloud Run", "Cloud Build", "Validation checks"],
   },
 ];
@@ -81,7 +81,7 @@ const toolGroups = [
       summary="A reproducible analysis of 3.7 million anonymized transactions, from raw annual files to a validated SQLite model and executive-ready business story."
       href="/projects/distributor-case-study/"
       repo="https://github.com/GlassHouse97/Distributor-Company-Case-Study"
-      accent="#76d7ff"
+      accent="#7cc8ff"
       skills={["SQL", "Python", "pandas", "SQLite", "Business analysis"]}
     >
       <div slot="preview" class="chart-preview">
@@ -99,7 +99,7 @@ const toolGroups = [
       summary="A 5e-compatible character, campaign, and game-master application with account verification, calculated sheets, campaign state, initiative, and production deployment."
       href="/projects/dnd-and-beyond/"
       repo="https://github.com/GlassHouse97/DND-And-Beyond"
-      accent="#b8a5ff"
+      accent="#a8b4ff"
       skills={["Python", "Reflex", "PostgreSQL", "Docker", "Cloud Run"]}
     >
       <div slot="preview" class="dnd-preview" aria-label="A stylized representation of the DND and Beyond campaign interface">
@@ -109,7 +109,7 @@ const toolGroups = [
             <div class="party-panel">
               <p>Party status</p>
               <div class="party-row"><i class="avatar purple">A</i><span><b>Ayla</b><small>Ranger · Level 6</small></span><strong>42 / 48</strong></div>
-              <div class="party-row"><i class="avatar green">B</i><span><b>Bram</b><small>Cleric · Level 6</small></span><strong>51 / 51</strong></div>
+              <div class="party-row"><i class="avatar azure">B</i><span><b>Bram</b><small>Cleric · Level 6</small></span><strong>51 / 51</strong></div>
               <div class="party-row"><i class="avatar gold">T</i><span><b>Thorne</b><small>Wizard · Level 6</small></span><strong>24 / 32</strong></div>
             </div>
             <div class="initiative-panel">
@@ -130,7 +130,7 @@ const toolGroups = [
       summary="A Python tool that turns published results and league constraints into auditable schedules, standings, make-up plans, and finished PDF reports."
       href="/projects/darts-league/"
       repo="https://github.com/GlassHouse97/Darts-League-Schedule"
-      accent="#ff856e"
+      accent="#ff8f80"
       skills={["Python", "Constraint logic", "Playwright", "JSON", "ReportLab"]}
     >
       <div slot="preview" class="schedule-preview">
@@ -232,8 +232,8 @@ const toolGroups = [
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--lime);
-    box-shadow: 0 0 0 6px rgba(184, 243, 107, 0.12);
+    background: var(--accent);
+    box-shadow: 0 0 0 6px rgba(110, 168, 254, 0.14);
     animation: pulse 2.8s ease-in-out infinite;
   }
 
@@ -242,7 +242,7 @@ const toolGroups = [
   }
 
   h1 em {
-    color: var(--lime);
+    color: var(--accent);
     font-weight: 500;
   }
 
@@ -269,7 +269,7 @@ const toolGroups = [
     background:
       linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      rgba(14, 19, 33, 0.82);
+      rgba(11, 23, 41, 0.86);
     background-size: 28px 28px;
     box-shadow: var(--shadow);
     transform: rotate(1.5deg);
@@ -379,7 +379,7 @@ const toolGroups = [
   }
 
   .terminal-card code b {
-    color: var(--lime);
+    color: var(--accent);
   }
 
   .work-section {
@@ -437,9 +437,9 @@ const toolGroups = [
 
   .app-frame {
     overflow: hidden;
-    border: 1px solid rgba(184, 165, 255, 0.34);
+    border: 1px solid rgba(168, 180, 255, 0.36);
     border-radius: 18px;
-    background: #171426;
+    background: #111c33;
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
     transform: rotate(1.5deg);
   }
@@ -509,7 +509,7 @@ const toolGroups = [
   }
 
   .party-row strong {
-    color: var(--lime);
+    color: var(--accent);
     font-family: var(--font-mono);
     font-size: 0.55rem;
   }
@@ -526,8 +526,8 @@ const toolGroups = [
     place-items: center;
   }
 
-  .purple { color: #dfd6ff; background: rgba(184, 165, 255, 0.23); }
-  .green { color: #d8ffad; background: rgba(184, 243, 107, 0.18); }
+  .purple { color: #e1e5ff; background: rgba(168, 180, 255, 0.22); }
+  .azure { color: #d8ecff; background: rgba(110, 168, 254, 0.2); }
   .gold { color: #ffe6a8; background: rgba(245, 201, 104, 0.19); }
 
   .turn {
@@ -592,12 +592,12 @@ const toolGroups = [
 
   .about-section {
     border-block: 1px solid var(--line);
-    background: #f4f0e6;
-    color: #17191e;
+    background: #edf4fc;
+    color: #14243a;
   }
 
   .about-section :global(.section-kicker) {
-    color: #416475;
+    color: #3b6f9c;
   }
 
   .about-grid {
@@ -607,15 +607,15 @@ const toolGroups = [
   }
 
   .about-grid h2 {
-    color: #15171b;
+    color: #132238;
   }
 
   .about-copy > p {
-    color: #555b64;
+    color: #52657b;
   }
 
   .about-copy .about-lead {
-    color: #1d2025;
+    color: #18304d;
     font-family: var(--font-display);
     font-size: clamp(1.65rem, 3vw, 2.5rem);
     line-height: 1.35;
@@ -627,7 +627,7 @@ const toolGroups = [
     gap: 1rem;
     padding: 1.4rem;
     margin-top: 2.4rem;
-    border: 1px solid rgba(23, 25, 30, 0.14);
+    border: 1px solid rgba(21, 42, 68, 0.14);
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.46);
   }
@@ -638,12 +638,12 @@ const toolGroups = [
 
   .personality-note p {
     margin: 0;
-    color: #4d525b;
+    color: #496078;
     font-size: 0.95rem;
   }
 
   .personality-note strong {
-    color: #181a1e;
+    color: #132238;
   }
 
   .tool-grid {
@@ -731,7 +731,7 @@ const toolGroups = [
 
   .credential-list a:hover strong,
   .credential-list a:hover b {
-    color: var(--lime);
+    color: var(--accent);
   }
 
   .credential-year {
