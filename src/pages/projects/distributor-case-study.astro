@@ -1,0 +1,233 @@
+---
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+
+const pipeline = [
+  ["01", "Verify", "Check source files, encodings, schemas, and checksums before loading."],
+  ["02", "Model", "Build a reproducible SQLite analytical model from seven annual transaction files."],
+  ["03", "Analyze", "Answer five business questions with documented SQL and Python workflows."],
+  ["04", "Communicate", "Translate the results into an executive summary, report, workbook, and visuals."],
+];
+---
+
+<ProjectLayout
+  title="Revenue Quality & Customer Profitability"
+  description="An end-to-end portfolio case study that turns 3.7 million anonymized distributor transactions into a validated analytical model and an executive-ready business story."
+  eyebrow="Analytics case study · 2018-2024"
+  emoji="📊"
+  repo="https://github.com/GlassHouse97/Distributor-Company-Case-Study"
+  accent="#76d7ff"
+>
+  <a slot="hero-action" class="button" href="https://github.com/GlassHouse97/Distributor-Company-Case-Study/blob/main/SOLUTION/EXECUTIVE_SUMMARY.md" target="_blank" rel="noreferrer">Executive summary <span aria-hidden="true">↗</span></a>
+
+  <div slot="hero-visual" class="chart-window">
+    <div class="window-top"><span></span><span></span><span></span><small>2018–2024 trend analysis</small></div>
+    <img src="/assets/distributor/01_revenue_margin_trends.png" alt="Revenue, gross profit, and margin trend chart from 2018 through 2024" width="1100" height="620" />
+  </div>
+
+  <div slot="stats" class="stat"><strong>3.7M</strong><span>Transaction rows</span></div>
+  <div slot="stats" class="stat"><strong>7 years</strong><span>2018 through 2024</span></div>
+  <div slot="stats" class="stat"><strong>+65%</strong><span>Recognized revenue</span></div>
+  <div slot="stats" class="stat"><strong>+89.6%</strong><span>Gross profit</span></div>
+
+  <section class="project-section">
+    <div><span class="section-number">01</span><h2>The question</h2></div>
+    <div class="body-copy">
+      <p>How should the company improve the quality of revenue—not just top-line growth, but profitability, diversification, and customer durability?</p>
+      <p>
+        The project deliberately goes beyond “find an interesting dataset and make a dashboard.” It starts with five decision-oriented business questions, preserves real accounting complexity, and produces both a technical audit trail and a concise leadership-facing answer.
+      </p>
+      <div class="callout"><strong>The core idea:</strong> revenue growth is only good growth when the margin, concentration, and customer-retention story supports it.</div>
+    </div>
+  </section>
+
+  <section class="project-section">
+    <div><span class="section-number">02</span><h2>The workflow</h2></div>
+    <div class="body-copy">
+      <p>I treated reproducibility and data trust as part of the analysis—not cleanup work to hide behind the final chart.</p>
+      <div class="pipeline-grid">
+        {pipeline.map(([number, title, copy]) => (
+          <article>
+            <span>{number}</span>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>
+        ))}
+      </div>
+      <p>
+        Important modeling rules remain explicit: the accounting period is the reporting authority, historical customer classifications are preserved, date-like pack sizes stay as text, and returns or unusual cost activity are flagged instead of silently deleted.
+      </p>
+    </div>
+  </section>
+
+  <section class="project-section">
+    <div><span class="section-number">03</span><h2>What the data said</h2></div>
+    <div class="body-copy">
+      <p>Growth was profitable and individual-customer risk was low, but the segment and dormant-account story created clear strategic priorities.</p>
+      <ul class="finding-list">
+        <li><strong>Margin improved:</strong> gross margin expanded from 19.15% to 22.01% while gross profit grew faster than revenue.</li>
+        <li><strong>The core was clear:</strong> Independent Retail generated 48.75% of revenue and 51.37% of gross profit.</li>
+        <li><strong>Concentration had two meanings:</strong> the largest customer represented only 1.13% of revenue, while the largest segment represented 48.75%.</li>
+        <li><strong>Reactivation was material:</strong> non-active customers carried a $23.0 million trailing-revenue baseline.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="project-section gallery-section">
+    <div><span class="section-number">04</span><h2>Published visuals</h2></div>
+    <div class="body-copy chart-gallery">
+      <figure class="wide">
+        <img src="/assets/distributor/02_segment_profitability.png" alt="Customer segment profitability analysis" loading="lazy" width="1100" height="620" />
+        <figcaption>Segment profitability: identifying the economic engine and under-monetized scale.</figcaption>
+      </figure>
+      <figure>
+        <img src="/assets/distributor/03_customer_concentration.png" alt="Customer and segment revenue concentration analysis" loading="lazy" width="1100" height="620" />
+        <figcaption>Concentration: low single-customer dependency, meaningful segment dependency.</figcaption>
+      </figure>
+      <figure>
+        <img src="/assets/distributor/04_retention_risk.png" alt="Customer retention and dormant account risk analysis" loading="lazy" width="1100" height="620" />
+        <figcaption>Retention: sizing the trailing-revenue baseline associated with non-active accounts.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="project-section">
+    <div><span class="section-number">05</span><h2>The deliverable</h2></div>
+    <div class="body-copy">
+      <p>The finished repository is meant to work for both a five-minute reader and a technical reviewer who wants to reproduce every number.</p>
+      <ul>
+        <li>A browser-friendly executive summary with recommendations</li>
+        <li>Detailed answers and supporting SQL for all five business questions</li>
+        <li>An editable Word report and filterable Excel analysis workbook</li>
+        <li>A complete public dataset, pipeline guide, data dictionary, checksums, and validation evidence</li>
+      </ul>
+      <div class="button-row project-buttons">
+        <a class="button button-primary" href="https://github.com/GlassHouse97/Distributor-Company-Case-Study/blob/main/SOLUTION/EXECUTIVE_SUMMARY.md" target="_blank" rel="noreferrer">Read the executive answer <span aria-hidden="true">↗</span></a>
+        <a class="button" href="https://github.com/GlassHouse97/Distributor-Company-Case-Study" target="_blank" rel="noreferrer">Reproduce the analysis <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</ProjectLayout>
+
+<style>
+  .chart-window {
+    overflow: hidden;
+    border: 1px solid rgba(118, 215, 255, 0.32);
+    border-radius: 18px;
+    background: white;
+    box-shadow: 0 32px 90px rgba(0, 0, 0, 0.43);
+    transform: rotate(1.8deg);
+  }
+
+  .window-top {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 35px;
+    padding: 0 12px;
+    color: #66717b;
+    background: #eef2f4;
+  }
+
+  .window-top span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #c3cbd0;
+  }
+
+  .window-top small {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+  }
+
+  .chart-window img {
+    width: 100%;
+  }
+
+  .pipeline-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-block: 2.2rem;
+  }
+
+  .pipeline-grid article {
+    padding: 1.35rem;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  .pipeline-grid span {
+    color: var(--blue);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+  }
+
+  .pipeline-grid h3 {
+    margin: 1rem 0 0.6rem;
+    font-size: 1rem;
+  }
+
+  .pipeline-grid p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  .finding-list {
+    padding: 0;
+    margin-top: 2rem;
+    list-style: none;
+  }
+
+  .finding-list li {
+    padding: 1.15rem 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .chart-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    max-width: none !important;
+  }
+
+  figure {
+    overflow: hidden;
+    margin: 0;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: white;
+  }
+
+  figure.wide {
+    grid-column: 1 / -1;
+  }
+
+  figure img {
+    width: 100%;
+  }
+
+  figcaption {
+    padding: 1rem;
+    color: #5e6570;
+    background: #f4f5f6;
+    font-size: 0.78rem;
+  }
+
+  .project-buttons {
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 620px) {
+    .pipeline-grid,
+    .chart-gallery {
+      grid-template-columns: 1fr;
+    }
+
+    figure.wide {
+      grid-column: auto;
+    }
+  }
+</style>

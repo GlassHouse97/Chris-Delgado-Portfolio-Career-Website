@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Page not found | Chris Delgado" description="The requested page could not be found.">
+  <section class="not-found shell">
+    <span class="eyebrow">Error 404</span>
+    <h1>Well, that result didn't validate.</h1>
+    <p>The page may have moved, or the link may be pointing somewhere that does not exist yet.</p>
+    <a class="button button-primary" href="/">Return to the portfolio <span aria-hidden="true">→</span></a>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    display: grid;
+    min-height: 70vh;
+    align-content: center;
+    padding-block: 80px;
+  }
+
+  h1 {
+    max-width: 850px;
+    margin-bottom: 1.5rem;
+    font-size: clamp(3rem, 8vw, 6.7rem);
+  }
+
+  p {
+    max-width: 620px;
+    margin-bottom: 2rem;
+    color: var(--ink-muted);
+    font-size: 1.2rem;
+  }
+
+  .button {
+    justify-self: start;
+  }
+</style>

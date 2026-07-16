@@ -1,0 +1,90 @@
+<footer id="contact" class="site-footer">
+  <div class="shell footer-grid">
+    <div>
+      <p class="footer-kicker">Have a messy problem?</p>
+      <h2>Let's make it useful.</h2>
+      <p class="footer-copy">
+        I'm interested in data analysis, Python development, and the oddly specific
+        operational problems that live somewhere in between.
+      </p>
+    </div>
+
+    <div class="footer-actions">
+      <a class="button button-primary" href="mailto:chrisdelgado.mail@gmail.com">Email me <span aria-hidden="true">↗</span></a>
+      <a class="button" href="https://www.linkedin.com/in/christopherdelgadospage/" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+      <a class="button" href="https://github.com/GlassHouse97" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+
+  <div class="shell footer-bottom">
+    <span>© {new Date().getFullYear()} Chris Delgado</span>
+    <span>Built with Astro, curiosity, and validation checks.</span>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-top: clamp(76px, 10vw, 130px);
+    border-top: 1px solid var(--line);
+    background:
+      radial-gradient(circle at 84% 25%, rgba(184, 243, 107, 0.11), transparent 26rem),
+      #090d17;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.6fr);
+    gap: clamp(2.5rem, 8vw, 7rem);
+    align-items: end;
+  }
+
+  .footer-kicker {
+    margin-bottom: 1rem;
+    color: var(--lime);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin-bottom: 1.4rem;
+  }
+
+  .footer-copy {
+    max-width: 640px;
+    margin-bottom: 0;
+    color: var(--ink-muted);
+    font-size: 1.13rem;
+  }
+
+  .footer-actions {
+    display: grid;
+    gap: 10px;
+  }
+
+  .footer-actions .button {
+    justify-content: space-between;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 62px 28px;
+    color: #777d90;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+  }
+
+  @media (max-width: 760px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+    }
+  }
+</style>

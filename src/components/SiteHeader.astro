@@ -1,0 +1,122 @@
+---
+const navItems = [
+  { label: "Work", href: "/#work" },
+  { label: "About", href: "/#about" },
+  { label: "Toolbox", href: "/#toolbox" },
+  { label: "Contact", href: "/#contact" },
+];
+---
+
+<header class="site-header">
+  <div class="shell nav-shell">
+    <a class="brand" href="/" aria-label="Chris Delgado - home">
+      <span class="brand-mark">CD</span>
+      <span class="brand-copy">
+        <strong>Chris Delgado</strong>
+        <small>Data + Python</small>
+      </span>
+    </a>
+
+    <nav aria-label="Primary navigation">
+      <ul>
+        {navItems.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(7, 10, 18, 0.82);
+    backdrop-filter: blur(18px);
+  }
+
+  .nav-shell {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 76px;
+    gap: 2rem;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    text-decoration: none;
+  }
+
+  .brand-mark {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(184, 243, 107, 0.55);
+    border-radius: 11px;
+    color: var(--lime);
+    background: rgba(184, 243, 107, 0.08);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 800;
+    place-items: center;
+  }
+
+  .brand-copy {
+    display: grid;
+    line-height: 1.1;
+  }
+
+  .brand-copy strong {
+    font-size: 0.93rem;
+  }
+
+  .brand-copy small {
+    margin-top: 0.28rem;
+    color: var(--ink-muted);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.7rem, 2vw, 1.6rem);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  nav a {
+    color: var(--ink-muted);
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 160ms ease;
+  }
+
+  nav a:hover {
+    color: var(--ink);
+  }
+
+  @media (max-width: 620px) {
+    .nav-shell {
+      min-height: 66px;
+    }
+
+    .brand-copy {
+      display: none;
+    }
+
+    nav li:nth-child(2),
+    nav li:nth-child(3) {
+      display: none;
+    }
+  }
+</style>

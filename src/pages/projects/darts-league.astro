@@ -1,0 +1,268 @@
+---
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+
+const constraints = [
+  ["Keep", "Every original future game in its assigned week"],
+  ["Prefer", "Open slots created by games that were played early"],
+  ["Balance", "Added make-up games across the remaining weeks"],
+  ["Limit", "Normally no more than three matches per player per night"],
+  ["Avoid", "The same two players meeting twice in one future night"],
+  ["Reject", "Any plan missing a game or one of the required pairings"],
+];
+---
+
+<ProjectLayout
+  title="Dart League Schedule & Standings"
+  description="A Python scheduling and reporting tool that reconciles published results, preserves a canonical pairing grid, and produces auditable make-up plans and PDF schedules."
+  eyebrow="Python automation · Constraint logic"
+  emoji="🎯"
+  repo="https://github.com/GlassHouse97/Darts-League-Schedule"
+  accent="#ff856e"
+>
+  <div slot="hero-visual" class="schedule-stack">
+    <div class="sheet sheet-back"></div>
+    <div class="sheet sheet-front">
+      <img src="/assets/darts/darts-schedule.png" alt="Generated Long Island Elite PDSL standings and results schedule" width="1224" height="1584" />
+    </div>
+  </div>
+
+  <div slot="stats" class="stat"><strong>30</strong><span>Games per division</span></div>
+  <div slot="stats" class="stat"><strong>15</strong><span>Unique pairings</span></div>
+  <div slot="stats" class="stat"><strong>2×</strong><span>Each pairing repeats</span></div>
+  <div slot="stats" class="stat"><strong>PDF</strong><span>Auditable output</span></div>
+
+  <section class="project-section">
+    <div><span class="section-number">01</span><h2>The oddly specific problem</h2></div>
+    <div class="body-copy">
+      <p>League matches do not always happen in the neat order printed on the original schedule. Games are played early, postponed, or completed as late make-ups—and the remaining plan still has to be fair.</p>
+      <p>
+        This tool keeps the fixed seat-number grid separate from player names, matches published DartConnect recaps back to the canonical schedule, and labels each original slot as played, early, late make-up, incomplete, or still to play.
+      </p>
+      <div class="callout"><strong>The practical goal:</strong> make the rest of the season easier to run without losing the audit trail back to the original 30-game plan.</div>
+    </div>
+  </section>
+
+  <section class="project-section">
+    <div><span class="section-number">02</span><h2>The planning logic</h2></div>
+    <div class="body-copy">
+      <p>The solver is not simply filling the next empty row. It is balancing player load, future weeks, repeat matchups, and the integrity of the original schedule.</p>
+      <div class="constraint-list">
+        {constraints.map(([verb, detail], index) => (
+          <div>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <strong>{verb}</strong>
+            <p>{detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="project-section">
+    <div><span class="section-number">03</span><h2>From browser recap to finished schedule</h2></div>
+    <div class="body-copy">
+      <p>Published match data becomes a stable local ledger, then an auditable plan and a report people can actually use on league night.</p>
+      <ol class="flow-list">
+        <li><span>01</span><div><strong>Refresh</strong><p>Optionally collect JavaScript-rendered DartConnect results and standings with Playwright.</p></div></li>
+        <li><span>02</span><div><strong>Reconcile</strong><p>Map the recap order back to the canonical game number and preserve actual week and slot separately.</p></div></li>
+        <li><span>03</span><div><strong>Plan</strong><p>Find placements for incomplete games while respecting player and pairing constraints.</p></div></li>
+        <li><span>04</span><div><strong>Validate</strong><p>Reject the plan unless all 30 games and all 15 twice-played pairings are accounted for.</p></div></li>
+        <li><span>05</span><div><strong>Publish</strong><p>Generate standings, results, future schedules, make-up notes, and a JSON audit summary.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="project-section">
+    <div><span class="section-number">04</span><h2>The output</h2></div>
+    <div class="body-copy output-grid">
+      <figure>
+        <img src="/assets/darts/darts-schedule.png" alt="Page one of a generated darts league standings and schedule PDF" loading="lazy" width="1224" height="1584" />
+        <figcaption>A generated division report with standings and results in the order games were actually played.</figcaption>
+      </figure>
+      <div>
+        <p>The PDF is meant for everyday use; the accompanying JSON summary is meant for auditing and later edits.</p>
+        <ul>
+          <li>Readable division standings</li>
+          <li>Actual results grouped by played week</li>
+          <li>Future schedule with make-up placements</li>
+          <li>Notes showing original week and open-slot use</li>
+          <li>Player loads and inferred seat mapping</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-section">
+    <div><span class="section-number">05</span><h2>Why this project matters</h2></div>
+    <div class="body-copy">
+      <p>It is a good example of the kind of development I enjoy most: a small, concrete tool that encodes real operational knowledge and makes a repeated task less fragile.</p>
+      <p>
+        The interesting part is not simply generating a PDF. It is separating stable identities from presentation names, preserving original and actual schedule positions, expressing human constraints clearly, and refusing to publish an invalid result.
+      </p>
+      <div class="button-row project-buttons">
+        <a class="button button-primary" href="https://github.com/GlassHouse97/Darts-League-Schedule" target="_blank" rel="noreferrer">Explore the scheduling tool <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</ProjectLayout>
+
+<style>
+  .schedule-stack {
+    position: relative;
+    min-height: 570px;
+  }
+
+  .sheet {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(76%, 390px);
+    aspect-ratio: 8.5 / 11;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 32px 90px rgba(0, 0, 0, 0.48);
+  }
+
+  .sheet-back {
+    opacity: 0.38;
+    transform: translate(-55%, -48%) rotate(-8deg);
+  }
+
+  .sheet-front {
+    overflow: hidden;
+    transform: translate(-45%, -50%) rotate(4deg);
+  }
+
+  .sheet-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .constraint-list {
+    margin-top: 2rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .constraint-list > div {
+    display: grid;
+    grid-template-columns: 42px 90px 1fr;
+    gap: 1rem;
+    align-items: baseline;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .constraint-list span {
+    color: var(--coral);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+  }
+
+  .constraint-list strong {
+    font-size: 0.86rem;
+  }
+
+  .constraint-list p {
+    margin: 0;
+    font-size: 0.92rem;
+  }
+
+  .flow-list {
+    padding: 0;
+    margin-top: 2rem;
+    list-style: none;
+  }
+
+  .flow-list li {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 1rem;
+    padding: 1.2rem;
+    border: 1px solid var(--line);
+    border-bottom: 0;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .flow-list li:first-child {
+    border-radius: 14px 14px 0 0;
+  }
+
+  .flow-list li:last-child {
+    border-bottom: 1px solid var(--line);
+    border-radius: 0 0 14px 14px;
+  }
+
+  .flow-list li > span {
+    color: var(--coral);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+  }
+
+  .flow-list strong {
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
+  .flow-list p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  .output-grid {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.65fr) minmax(0, 1.35fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+    max-width: none !important;
+  }
+
+  figure {
+    overflow: hidden;
+    margin: 0;
+    border-radius: 8px;
+    background: white;
+    box-shadow: var(--shadow);
+    transform: rotate(-1.5deg);
+  }
+
+  figure img {
+    width: 100%;
+  }
+
+  figcaption {
+    padding: 1rem;
+    color: #565d66;
+    background: #f0f1f2;
+    font-size: 0.72rem;
+  }
+
+  .project-buttons {
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 760px) {
+    .schedule-stack {
+      min-height: 470px;
+    }
+
+    .output-grid {
+      grid-template-columns: 1fr;
+    }
+
+    figure {
+      max-width: 380px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .constraint-list > div {
+      grid-template-columns: 34px 1fr;
+    }
+
+    .constraint-list p {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

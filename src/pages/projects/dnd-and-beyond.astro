@@ -1,0 +1,291 @@
+---
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+
+const layers = [
+  { label: "Product", items: ["Character builder", "Campaign hub", "DM table", "Mobile sheet"] },
+  { label: "Application", items: ["Reflex state", "Rules math", "Email verification", "Role boundaries"] },
+  { label: "Data", items: ["SQLite local", "PostgreSQL production", "319-spell SRD", "Persistent campaigns"] },
+  { label: "Delivery", items: ["pytest", "Docker", "Cloud Run", "Automated builds"] },
+];
+---
+
+<ProjectLayout
+  title="DND and Beyond"
+  description="A 5e-compatible character, campaign, and game-master application built with Python and Reflex—from calculated sheets and local rules data to production deployment."
+  eyebrow="Full-stack Python application"
+  emoji="🐉"
+  repo="https://github.com/GlassHouse97/DND-And-Beyond"
+  accent="#b8a5ff"
+>
+  <div slot="hero-visual" class="campaign-card" aria-label="DND and Beyond product capabilities">
+    <div class="campaign-top">
+      <span>CAMPAIGN / EMBERFALL</span>
+      <small>DM view</small>
+    </div>
+    <div class="campaign-body">
+      <div class="session-note">
+        <small>Where we left off</small>
+        <strong>The party reached the ruined watchtower.</strong>
+        <p>Shared notes, DM state, party HP, conditions, NPCs, and initiative persist between sessions.</p>
+      </div>
+      <div class="campaign-metrics">
+        <span><b>4</b><small>Players</small></span>
+        <span><b>6</b><small>NPCs</small></span>
+        <span><b>12</b><small>Sessions</small></span>
+      </div>
+    </div>
+  </div>
+
+  <div slot="stats" class="stat"><strong>319</strong><span>SRD spells bundled</span></div>
+  <div slot="stats" class="stat"><strong>2 DBs</strong><span>SQLite + PostgreSQL</span></div>
+  <div slot="stats" class="stat"><strong>5e</strong><span>Derived-stat math</span></div>
+  <div slot="stats" class="stat"><strong>1 image</strong><span>Docker deployment</span></div>
+
+  <section class="project-section">
+    <div><span class="section-number">01</span><h2>The problem</h2></div>
+    <div class="body-copy">
+      <p>Tabletop tools tend to split the experience: character sheets in one place, campaign notes in another, and the game master tracking initiative somewhere else.</p>
+      <p>
+        I wanted one phone-friendly Python application where players could manage calculated characters, join campaigns with invite codes, and return to a shared campaign state—while the game master gets a purpose-built table for notes, NPCs, initiative, and party status.
+      </p>
+      <div class="callout"><strong>The product bar:</strong> exact rules math, useful mobile views, persistent campaign state, and a DM screen that opens directly onto “where we last left off.”</div>
+    </div>
+  </section>
+
+  <section class="project-section">
+    <div><span class="section-number">02</span><h2>What I built</h2></div>
+    <div class="body-copy">
+      <p>The project grew from a character sheet into a real multi-user product with explicit player and game-master workflows.</p>
+      <div class="feature-grid">
+        <article><span aria-hidden="true">🪪</span><h3>Identity</h3><p>Email registration, verification, login, and blank-by-default user dashboards.</p></article>
+        <article><span aria-hidden="true">⚔️</span><h3>Characters</h3><p>Calculated sheets with abilities, saves, skills, combat stats, attacks, equipment, and spells.</p></article>
+        <article><span aria-hidden="true">🗺️</span><h3>Campaigns</h3><p>Invite codes, roles, shared notes, session logs, character attachments, and party state.</p></article>
+        <article><span aria-hidden="true">🎲</span><h3>DM table</h3><p>Private notes, NPC and initiative trackers, conditions, dice, and synchronized HP.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-section">
+    <div><span class="section-number">03</span><h2>System at a glance</h2></div>
+    <div class="body-copy system-stack">
+      {layers.map((layer, index) => (
+        <div class="system-layer">
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <strong>{layer.label}</strong>
+          <ul>{layer.items.map((item) => <li>{item}</li>)}</ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="project-section">
+    <div><span class="section-number">04</span><h2>Rules without a runtime dependency</h2></div>
+    <div class="body-copy">
+      <p>The application ships with the complete 319-spell SRD 5.1 catalog, so core character creation and play do not depend on a third-party rules API staying online.</p>
+      <p>
+        Class-aware spell logic covers prepared and known spellcasting, Wizard spellbooks, Pact Magic, Magical Secrets, and ancestry-based innate spells. Official derived-stat math is isolated and covered by automated tests.
+      </p>
+      <ul>
+        <li>Local bundled rules data for dependable core flows</li>
+        <li>Clear attribution and use of CC-BY-4.0 SRD content</li>
+        <li>Rules math kept separate from interface state for easier testing</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="project-section">
+    <div><span class="section-number">05</span><h2>From laptop to production</h2></div>
+    <div class="body-copy">
+      <p>Local development stays lightweight with SQLite. Production switches to PostgreSQL and runs as a single Docker container on Google Cloud Run.</p>
+      <p>
+        Runtime data, generated files, and source code stay deliberately separated. Credentials live outside Git, Cloud secrets are scoped to a dedicated runtime identity, and pushes to the main branch can trigger automated builds and deployment.
+      </p>
+      <div class="button-row project-buttons">
+        <a class="button button-primary" href="https://github.com/GlassHouse97/DND-And-Beyond" target="_blank" rel="noreferrer">Explore the application <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</ProjectLayout>
+
+<style>
+  .campaign-card {
+    overflow: hidden;
+    border: 1px solid rgba(184, 165, 255, 0.34);
+    border-radius: 20px;
+    background: #161323;
+    box-shadow: 0 36px 90px rgba(0, 0, 0, 0.48);
+    transform: rotate(1.5deg);
+  }
+
+  .campaign-top {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--purple);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+  }
+
+  .campaign-top small {
+    color: #858095;
+    letter-spacing: 0;
+  }
+
+  .campaign-body {
+    padding: 1.2rem;
+  }
+
+  .session-note {
+    padding: 1.35rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .session-note small {
+    color: #8b8699;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .session-note strong {
+    display: block;
+    margin-block: 1.4rem 0.7rem;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  .session-note p {
+    margin: 0;
+    color: #9993a8;
+    font-size: 0.82rem;
+  }
+
+  .campaign-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .campaign-metrics span {
+    display: grid;
+    padding: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 11px;
+  }
+
+  .campaign-metrics b {
+    color: var(--purple);
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    font-weight: 500;
+  }
+
+  .campaign-metrics small {
+    color: #777184;
+    font-size: 0.58rem;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 2rem;
+  }
+
+  .feature-grid article {
+    padding: 1.4rem;
+    border: 1px solid var(--line);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.024);
+  }
+
+  .feature-grid article > span {
+    font-size: 1.35rem;
+  }
+
+  .feature-grid h3 {
+    margin: 1.3rem 0 0.55rem;
+    font-size: 1rem;
+  }
+
+  .feature-grid p {
+    margin: 0;
+    font-size: 0.88rem;
+  }
+
+  .system-stack {
+    max-width: none !important;
+  }
+
+  .system-layer {
+    display: grid;
+    grid-template-columns: 38px 120px 1fr;
+    gap: 1rem;
+    align-items: start;
+    padding: 1.2rem;
+    border: 1px solid var(--line);
+    border-bottom: 0;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .system-layer:first-child {
+    border-radius: 14px 14px 0 0;
+  }
+
+  .system-layer:last-child {
+    border-bottom: 1px solid var(--line);
+    border-radius: 0 0 14px 14px;
+  }
+
+  .system-layer > span {
+    color: var(--purple);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+  }
+
+  .system-layer > strong {
+    font-size: 0.92rem;
+  }
+
+  .system-layer ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .system-layer li {
+    padding: 0.28rem 0.52rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.7rem;
+  }
+
+  .project-buttons {
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 620px) {
+    .feature-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .system-layer {
+      grid-template-columns: 34px 1fr;
+    }
+
+    .system-layer ul {
+      grid-column: 1 / -1;
+    }
+  }
+</style>
