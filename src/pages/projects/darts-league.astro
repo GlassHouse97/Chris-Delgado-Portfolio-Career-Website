@@ -13,7 +13,7 @@ const constraints = [
 
 <ProjectLayout
   title="Dart League Schedule & Standings"
-  description="A Python scheduling and reporting tool that reconciles published results, preserves a canonical pairing grid, and produces auditable make-up plans and PDF schedules."
+  description="A personal Python project built around a real darts-league problem, showing how I turn scheduling constraints and published results into reliable, auditable schedules and reports."
   eyebrow="Python automation · Constraint logic"
   emoji="🎯"
   repo="https://github.com/GlassHouse97/Darts-League-Schedule"
@@ -34,11 +34,11 @@ const constraints = [
   <section class="project-section">
     <div><span class="section-number">01</span><h2>The oddly specific problem</h2></div>
     <div class="body-copy">
-      <p>League matches do not always happen in the neat order printed on the original schedule. Games are played early, postponed, or completed as late make-ups—and the remaining plan still has to be fair.</p>
+      <p>League matches do not always happen in the neat order printed on the original schedule. Games are played early, postponed, or completed as late make-ups, and the remaining plan still has to be fair.</p>
       <p>
         This tool keeps the fixed seat-number grid separate from player names, matches published DartConnect recaps back to the canonical schedule, and labels each original slot as played, early, late make-up, incomplete, or still to play.
       </p>
-      <div class="callout"><strong>The practical goal:</strong> make the rest of the season easier to run without losing the audit trail back to the original 30-game plan.</div>
+      <div class="callout"><strong>The practical goal.</strong> Make the rest of the season easier to run without losing the audit trail back to the original 30-game plan.</div>
     </div>
   </section>
 
@@ -76,11 +76,11 @@ const constraints = [
     <div><span class="section-number">04</span><h2>The output</h2></div>
     <div class="body-copy output-grid">
       <figure>
-        <img src="/assets/darts/darts-schedule.png" alt="Page one of a generated darts league standings and schedule PDF" width="1224" height="1584" />
-        <figcaption>A generated division report with standings and results in the order games were actually played.</figcaption>
+        <img src="/assets/darts/darts-scheduling-illustration.png" alt="Stylized dartboard and scheduling grid representing the league planning problem" width="1536" height="1024" />
+        <figcaption>A stylized view of the scheduling problem rather than a distorted document preview.</figcaption>
       </figure>
       <div>
-        <p>The PDF is meant for everyday use; the accompanying JSON summary is meant for auditing and later edits.</p>
+      <p>The PDF is meant for everyday use. The accompanying JSON summary is meant for auditing and later edits.</p>
         <ul>
           <li>Readable division standings</li>
           <li>Actual results grouped by played week</li>
@@ -95,7 +95,7 @@ const constraints = [
   <section class="project-section">
     <div><span class="section-number">05</span><h2>Why this project matters</h2></div>
     <div class="body-copy">
-      <p>It is a good example of the kind of development I enjoy most: a small, concrete tool that encodes real operational knowledge and makes a repeated task less fragile.</p>
+      <p>This was another personal project built around a problem I actually needed to solve. It gave me a practical way to demonstrate how I turn real-world rules, imperfect inputs, and edge cases into software people can trust.</p>
       <p>
         The interesting part is not simply generating a PDF. It is separating stable identities from presentation names, preserving original and actual schedule positions, expressing human constraints clearly, and refusing to publish an invalid result.
       </p>
@@ -212,7 +212,7 @@ const constraints = [
 
   .output-grid {
     display: grid;
-    grid-template-columns: minmax(260px, 0.65fr) minmax(0, 1.35fr);
+    grid-template-columns: minmax(300px, 1fr) minmax(0, 1fr);
     gap: clamp(2rem, 5vw, 4rem);
     align-items: center;
     max-width: none !important;
@@ -221,20 +221,22 @@ const constraints = [
   figure {
     overflow: hidden;
     margin: 0;
-    border-radius: 8px;
-    background: white;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--night-soft);
     box-shadow: var(--shadow);
-    transform: rotate(-1.5deg);
   }
 
   figure img {
     width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
   }
 
   figcaption {
     padding: 1rem;
-    color: #565d66;
-    background: #f0f1f2;
+    color: var(--ink-muted);
+    background: rgba(255, 255, 255, 0.025);
     font-size: 0.72rem;
   }
 
@@ -253,8 +255,7 @@ const constraints = [
 
     figure {
       width: 100%;
-      max-width: 380px;
-      transform: none;
+      max-width: 520px;
     }
   }
 

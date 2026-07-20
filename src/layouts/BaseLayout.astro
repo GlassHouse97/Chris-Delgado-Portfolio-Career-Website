@@ -10,8 +10,10 @@ interface Props {
 
 const {
   title = "Chris Delgado | Data Analyst & Python Developer",
-  description = "Portfolio of Chris Delgado: data analysis, Python development, practical automation, and full-stack project work.",
+  description = "Chris Delgado's portfolio of data analysis, Python development, practical automation, and full-stack project work.",
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -22,10 +24,12 @@ const {
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#07111f" />
+    <link rel="canonical" href={canonicalURL} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
     <meta name="twitter:card" content="summary" />
     <title>{title}</title>
   </head>

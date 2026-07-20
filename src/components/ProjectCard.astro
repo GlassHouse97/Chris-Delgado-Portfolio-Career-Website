@@ -6,11 +6,24 @@ interface Props {
   summary: string;
   href: string;
   repo: string;
+  live?: string;
+  liveLabel?: string;
   accent: string;
   skills: string[];
 }
 
-const { index, emoji, title, summary, href, repo, accent, skills } = Astro.props;
+const {
+  index,
+  emoji,
+  title,
+  summary,
+  href,
+  repo,
+  live,
+  liveLabel = "View live project",
+  accent,
+  skills,
+} = Astro.props;
 ---
 
 <article class="project-card" style={`--project-accent: ${accent}`}>
@@ -29,7 +42,17 @@ const { index, emoji, title, summary, href, repo, accent, skills } = Astro.props
       {skills.map((skill) => <li class="chip">{skill}</li>)}
     </ul>
     <div class="project-links">
-      <a class="case-link" href={href}>Read the case study <span aria-hidden="true">→</span></a>
+      {
+        live ? (
+          <a class="case-link" href={live} target="_blank" rel="noreferrer">
+            {liveLabel} <span aria-hidden="true">↗</span>
+          </a>
+        ) : (
+          <a class="case-link" href={href}>
+            Read the case study <span aria-hidden="true">→</span>
+          </a>
+        )
+      }
       <a class="repo-link" href={repo} target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
     </div>
   </div>
@@ -90,7 +113,7 @@ const { index, emoji, title, summary, href, repo, accent, skills } = Astro.props
   h3 {
     margin: 3.5rem 0 1rem;
     font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3.4rem);
+    font-size: clamp(2rem, 3.5vw, 3.25rem);
     font-weight: 500;
     letter-spacing: -0.04em;
   }

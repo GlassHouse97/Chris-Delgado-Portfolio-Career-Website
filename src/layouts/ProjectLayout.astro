@@ -8,9 +8,10 @@ interface Props {
   emoji: string;
   repo: string;
   accent: string;
+  showStats?: boolean;
 }
 
-const { title, description, eyebrow, emoji, repo, accent } = Astro.props;
+const { title, description, eyebrow, emoji, repo, accent, showStats = true } = Astro.props;
 ---
 
 <BaseLayout title={`${title} | Chris Delgado`} description={description}>
@@ -33,11 +34,15 @@ const { title, description, eyebrow, emoji, repo, accent } = Astro.props;
       </div>
     </header>
 
-    <div class="stats-band">
-      <div class="shell stats-grid">
-        <slot name="stats" />
-      </div>
-    </div>
+    {
+      showStats && (
+        <div class="stats-band">
+          <div class="shell stats-grid">
+            <slot name="stats" />
+          </div>
+        </div>
+      )
+    }
 
     <div class="project-body shell">
       <slot />

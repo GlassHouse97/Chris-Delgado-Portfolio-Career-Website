@@ -27,7 +27,7 @@ const toolGroups = [
       <div class="availability"><span></span> Building practical things with data + Python</div>
       <h1>
         Hi, I'm Chris.<br />
-        I make <em>messy problems</em> useful.
+        I make <em>data</em> make sense.
       </h1>
       <p class="hero-lead">
         I'm a <strong>Data Analyst and Python developer</strong> who turns raw data,
@@ -35,8 +35,10 @@ const toolGroups = [
       </p>
       <div class="button-row">
         <a class="button button-primary" href="#work">Explore my work <span aria-hidden="true">↓</span></a>
+        <a class="button" href="/resume/chris-delgado-resume-2026.pdf" download="Chris Delgado Resume 2026.pdf">Download resume <span aria-hidden="true">↓</span></a>
         <a class="button" href="https://github.com/GlassHouse97" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
       </div>
+      <p class="alternate-resume">Need the editable version? <a href="/resume/chris-delgado-resume-2026.docx" download="Chris Delgado Resume 2026.docx">Download the Word file.</a></p>
     </div>
 
     <div class="hero-board" aria-label="Highlights from Chris's portfolio">
@@ -81,6 +83,8 @@ const toolGroups = [
       summary="A reproducible analysis of 3.7 million anonymized transactions, from raw annual files to a validated SQLite model and executive-ready business story."
       href="/projects/distributor-case-study/"
       repo="https://github.com/GlassHouse97/Distributor-Company-Case-Study"
+      live="https://github.com/GlassHouse97/Distributor-Company-Case-Study/blob/main/SOLUTION/EXECUTIVE_SUMMARY.md"
+      liveLabel="View live case study"
       accent="#7cc8ff"
       skills={["SQL", "Python", "pandas", "SQLite", "Business analysis"]}
     >
@@ -96,7 +100,7 @@ const toolGroups = [
       index="02 / Application"
       emoji="🐉"
       title="DND and Beyond"
-      summary="A 5e-compatible character, campaign, and game-master application with account verification, calculated sheets, campaign state, initiative, and production deployment."
+      summary="A personal full-stack Python project built to demonstrate my technical range through calculated character sheets, persistent campaigns, initiative, and production deployment."
       href="/projects/dnd-and-beyond/"
       repo="https://github.com/GlassHouse97/DND-And-Beyond"
       accent="#a8b4ff"
@@ -127,7 +131,7 @@ const toolGroups = [
       index="03 / Automation"
       emoji="🎯"
       title="Dart League Schedule & Standings"
-      summary="A Python tool that turns published results and league constraints into auditable schedules, standings, make-up plans, and finished PDF reports."
+      summary="Another personal Python project built around a real league problem, showing how I turn messy rules and scheduling constraints into reliable tools people can actually use."
       href="/projects/darts-league/"
       repo="https://github.com/GlassHouse97/Darts-League-Schedule"
       accent="#ff8f80"
@@ -155,14 +159,14 @@ const toolGroups = [
           and end with something reliable enough to hand to another person.
         </p>
         <p>
-          My center of gravity is data analysis: SQL, Python, modeling, validation, and communicating what the numbers actually mean. But I also enjoy following a problem beyond the analysis—into automation, reporting, or a full application when that is the useful answer.
+          I like the part of analysis where the question is still a little fuzzy and the data doesn’t quite cooperate. That’s usually where the interesting work starts. I figure out what matters, check the assumptions, and make sure the answer holds up before anyone acts on it. SQL and Python are my usual tools, but the goal is never just to write a clever query or script.
         </p>
         <p>
-          Occasionally that means an executive profitability study. Occasionally it means a campaign manager or a make-up schedule for a darts league. The topic changes; the habit of making the result clear, repeatable, and usable does not.
+          I also have a hard time ignoring a clunky process once I know it can be better. If a report is too manual, a workflow is hard to trust, or people keep solving the same problem by hand, I want to fix it. I care about work that’s accurate, easy to understand, and still useful after I hand it off.
         </p>
         <aside class="personality-note">
           <span aria-hidden="true">🧪</span>
-          <p><strong>Personal operating principle:</strong> never trust an output until it has survived at least one validation check and one skeptical look.</p>
+          <p><strong>Personal operating principle.</strong> Never trust an output until it has survived at least one validation check and one skeptical look.</p>
         </aside>
       </div>
     </div>
@@ -241,6 +245,10 @@ const toolGroups = [
     margin-bottom: 1.8rem;
   }
 
+  .hero h1 {
+    font-size: clamp(3rem, 5.6vw, 5.4rem);
+  }
+
   h1 em {
     color: var(--accent);
     font-weight: 500;
@@ -255,6 +263,18 @@ const toolGroups = [
 
   .hero-lead strong {
     color: var(--ink);
+  }
+
+  .alternate-resume {
+    margin: 0.9rem 0 0;
+    color: var(--ink-muted);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+  }
+
+  .alternate-resume a {
+    color: var(--accent);
+    font-weight: 700;
   }
 
   .hero-board {
@@ -384,6 +404,17 @@ const toolGroups = [
 
   .work-section {
     padding-top: clamp(90px, 12vw, 160px);
+  }
+
+  .work-section > .section-heading {
+    max-width: 760px;
+    font-size: clamp(2.15rem, 4vw, 3.75rem);
+  }
+
+  .about-section h2,
+  .toolbox-section > .section-heading,
+  .credentials-section h2 {
+    font-size: clamp(2.15rem, 4vw, 3.75rem);
   }
 
   .chart-preview {

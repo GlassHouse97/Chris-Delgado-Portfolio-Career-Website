@@ -11,11 +11,12 @@ const layers = [
 
 <ProjectLayout
   title="DND and Beyond"
-  description="A 5e-compatible character, campaign, and game-master application built with Python and Reflex—from calculated sheets and local rules data to production deployment."
+  description="A personal full-stack Python project I built to demonstrate my technical range through a 5e-compatible character and campaign application, from calculated sheets and local rules data to production deployment."
   eyebrow="Full-stack Python application"
   emoji="🐉"
   repo="https://github.com/GlassHouse97/DND-And-Beyond"
   accent="#a8b4ff"
+  showStats={false}
 >
   <div slot="hero-visual" class="campaign-card" aria-label="DND and Beyond product capabilities">
     <div class="campaign-top">
@@ -28,27 +29,17 @@ const layers = [
         <strong>The party reached the ruined watchtower.</strong>
         <p>Shared notes, DM state, party HP, conditions, NPCs, and initiative persist between sessions.</p>
       </div>
-      <div class="campaign-metrics">
-        <span><b>4</b><small>Players</small></span>
-        <span><b>6</b><small>NPCs</small></span>
-        <span><b>12</b><small>Sessions</small></span>
-      </div>
     </div>
   </div>
-
-  <div slot="stats" class="stat"><strong>319</strong><span>SRD spells bundled</span></div>
-  <div slot="stats" class="stat"><strong>2 DBs</strong><span>SQLite + PostgreSQL</span></div>
-  <div slot="stats" class="stat"><strong>5e</strong><span>Derived-stat math</span></div>
-  <div slot="stats" class="stat"><strong>1 image</strong><span>Docker deployment</span></div>
 
   <section class="project-section">
     <div><span class="section-number">01</span><h2>The problem</h2></div>
     <div class="body-copy">
-      <p>Tabletop tools tend to split the experience: character sheets in one place, campaign notes in another, and the game master tracking initiative somewhere else.</p>
+      <p>Tabletop tools tend to split the experience across character sheets in one place, campaign notes in another, and the game master tracking initiative somewhere else.</p>
       <p>
-        I wanted one phone-friendly Python application where players could manage calculated characters, join campaigns with invite codes, and return to a shared campaign state—while the game master gets a purpose-built table for notes, NPCs, initiative, and party status.
+        I wanted one phone-friendly Python application where players could manage calculated characters, join campaigns with invite codes, and return to a shared campaign state while the game master gets a purpose-built table for notes, NPCs, initiative, and party status.
       </p>
-      <div class="callout"><strong>The product bar:</strong> exact rules math, useful mobile views, persistent campaign state, and a DM screen that opens directly onto “where we last left off.”</div>
+      <div class="callout"><strong>The product bar.</strong> Exact rules math, useful mobile views, persistent campaign state, and a DM screen that opens directly onto “where we last left off.”</div>
     </div>
   </section>
 
@@ -165,32 +156,6 @@ const layers = [
     margin: 0;
     color: #9993a8;
     font-size: 0.82rem;
-  }
-
-  .campaign-metrics {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-top: 8px;
-  }
-
-  .campaign-metrics span {
-    display: grid;
-    padding: 0.9rem;
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 11px;
-  }
-
-  .campaign-metrics b {
-    color: var(--purple);
-    font-family: var(--font-display);
-    font-size: 1.7rem;
-    font-weight: 500;
-  }
-
-  .campaign-metrics small {
-    color: #777184;
-    font-size: 0.58rem;
   }
 
   .feature-grid {
