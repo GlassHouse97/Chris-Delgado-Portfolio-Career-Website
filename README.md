@@ -2,6 +2,10 @@
 
 A static Astro portfolio for Chris Delgado, presenting three project case studies across data analysis, full-stack Python development, and practical automation.
 
+## Live site
+
+[View the live portfolio](https://portfolio.chrisdelgado.workers.dev/)
+
 ## Pages
 
 - `/` - portfolio homepage
