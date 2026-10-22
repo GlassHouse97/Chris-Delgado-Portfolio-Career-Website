@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Cost Efficiency · Chris Delgado</title>
+    <meta
+      name="description"
+      content="An interactive, reproducible analysis of AI spending, time saved, and campaign profitability. Explore the completed fictional MRU case study or download two learner exercises."
+    />
+    <meta name="theme-color" content="#10181b" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.mjs"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to dashboard</a>
+    <aside class="rail">
+      <a
+        class="brand"
+        href="https://portfolio.chrisdelgado.workers.dev/"
+        aria-label="Chris Delgado portfolio"
+        >CD<span>DATA &amp; DECISIONS</span></a
+      >
+      <div class="rail-rule"></div>
+      <p class="nav-label">THE ANALYSIS</p>
+      <nav aria-label="Dashboard views" id="view-nav">
+        <button type="button" data-view="overview" aria-current="page">
+          <span aria-hidden="true">◫</span> Company overview
+        </button>
+        <button type="button" data-view="campaigns">
+          <span aria-hidden="true">⇄</span> Campaign comparison
+        </button>
+        <button type="button" data-view="workflow">
+          <span aria-hidden="true">⌁</span> Workflow investigation
+        </button>
+      </nav>
+      <div class="rail-bottom">
+        <a href="#methodology">Methodology &amp; findings <span>↗</span></a>
+        <a href="#learn">Try the analysis yourself <span>↓</span></a>
+        <a
+          href="https://github.com/GlassHouse97/AI-Cost-Efficiency-Portfolio-Project"
+          target="_blank"
+          rel="noreferrer"
+          >Source on GitHub <span>↗</span></a
+        >
+        <div class="dataset-stamp">
+          <span class="status-dot"></span> SYNTHETIC DATA<br /><small
+            >MRU · September 2026</small
+          >
+        </div>
+      </div>
+    </aside>
+    <main id="main">
+      <div class="topline">
+        <a href="https://portfolio.chrisdelgado.workers.dev/#work"
+          >← Chris Delgado / Portfolio</a
+        ><span class="demo-badge">COMPLETED DEMO · CONTAINS ANSWERS</span>
+      </div>
+      <header class="page-header">
+        <p class="eyebrow">AI COST EFFICIENCY / A FICTIONAL BUSINESS CASE</p>
+        <h1>Is AI actually <em>paying off?</em></h1>
+        <p class="lede">
+          Follow the tokens. Account for the human time. See where AI creates
+          value—and where more usage means more work.
+        </p>
+        <div class="context-line">
+          <span>Marketing-R-Us × ChatABC</span><span>4 campaigns</span
+          ><span>240 completed tasks</span><span>$50 / staff hour</span>
+        </div>
+      </header>
+      <section class="filters" aria-label="Filter task analysis">
+        <div class="filter-heading">
+          <span>EXPLORE THE DATA</span
+          ><button id="reset" type="button">Reset filters ↺</button>
+        </div>
+        <div class="filter-grid">
+          <label
+            >Campaign<select id="campaign">
+              <option value="">All campaigns</option>
+            </select></label
+          >
+          <label
+            >Department<select id="department">
+              <option value="">All departments</option>
+            </select></label
+          >
+          <label
+            >Product<select id="product">
+              <option value="">All products</option>
+            </select></label
+          >
+          <label
+            >Model<select id="model">
+              <option value="">All models</option>
+            </select></label
+          >
+        </div>
+      </section>
+      <div class="view-heading">
+        <h2 id="view-title">Company overview</h2>
+        <span id="scope" role="status" aria-live="polite"
+          >Loading verified dataset…</span
+        >
+      </div>
+      <div id="load-error" role="alert" hidden></div>
+      <noscript
+        ><p class="notice">
+          Enable JavaScript to explore this dashboard. The
+          <a href="./downloads/mru-portfolio-project.zip">learner download</a>
+          works without JavaScript.
+        </p></noscript
+      >
+      <section id="metrics" class="metrics" aria-label="Key metrics"></section>
+      <p class="metric-note">
+        Estimated staff time value after AI fees. This is not payroll cash
+        saved. All people, prices, clients, and results are fictional.
+      </p>
+      <section id="overview-view" class="view" aria-label="Company overview">
+        <div id="story" class="story-strip"></div>
+        <div class="chart-grid">
+          <article class="panel">
+            <div class="panel-title">
+              <div>
+                <p class="eyebrow">VALUE AFTER AI FEES</p>
+                <h3>Not every campaign benefits.</h3>
+              </div>
+              <span class="unit">USD</span>
+            </div>
+            <div id="value-chart"></div>
+            <p class="chart-note">
+              Baseline time value less actual time value and token costs.
+            </p>
+          </article>
+          <article class="panel">
+            <div class="panel-title">
+              <div>
+                <p class="eyebrow">HUMAN EFFORT</p>
+                <h3>Time is the bigger cost.</h3>
+              </div>
+              <span class="unit">HOURS</span>
+            </div>
+            <div class="legend">
+              <span><i class="baseline"></i> Without AI estimate</span
+              ><span><i class="actual"></i> Actual with AI</span>
+            </div>
+            <div id="hours-chart"></div>
+          </article>
+        </div>
+        <div class="chart-grid lower-grid">
+          <article class="panel">
+            <div class="panel-title">
+              <div>
+                <p class="eyebrow">TOKEN ECONOMICS</p>
+                <h3>What drives the AI bill?</h3>
+              </div>
+            </div>
+            <div id="token-economics"></div>
+          </article>
+          <article class="panel">
+            <div class="panel-title">
+              <div>
+                <p class="eyebrow">DEPARTMENT VIEW</p>
+                <h3>Spend and estimated value.</h3>
+              </div>
+            </div>
+            <div id="department-chart"></div>
+          </article>
+        </div>
+        <article class="panel daily-panel">
+          <div class="panel-title">
+            <div>
+              <p class="eyebrow">DAILY AI SPENDING</p>
+              <h3>Every prompt has a price.</h3>
+            </div>
+            <div class="date-filters">
+              <label
+                >From<input
+                  type="date"
+                  id="date-from"
+                  min="2026-09-01"
+                  max="2026-09-30" /></label
+              ><label
+                >To<input
+                  type="date"
+                  id="date-to"
+                  min="2026-09-01"
+                  max="2026-09-30" /></label
+              ><button type="button" id="date-reset">Clear dates</button>
+            </div>
+          </div>
+          <p class="chart-note">
+            Dates filter this chart only, using prompt usage dates. Task metrics
+            and whole-campaign results keep their full scope.
+          </p>
+          <div id="daily-chart"></div>
+        </article>
+      </section>
+      <section
+        id="campaigns-view"
+        class="view"
+        aria-label="Campaign comparison"
+        hidden
+      >
+        <article class="panel">
+          <div class="panel-title">
+            <div>
+              <p class="eyebrow">SELECTED TASKS</p>
+              <h3>Compare the return on AI.</h3>
+            </div>
+          </div>
+          <div id="campaign-table"></div>
+        </article>
+        <article class="panel sensitivity">
+          <div>
+            <p class="eyebrow">CHALLENGE THE ASSUMPTION</p>
+            <h3>What if the time estimate is wrong?</h3>
+            <p class="chart-note">
+              Adjust baseline hours for selected tasks. Actual hours and AI
+              charges remain fixed. This scenario affects only the table below.
+            </p>
+          </div>
+          <label for="sensitivity"
+            >Baseline adjustment <output id="sensitivity-label">0%</output
+            ><input
+              type="range"
+              id="sensitivity"
+              min="-20"
+              max="20"
+              step="5"
+              value="0"
+          /></label>
+          <div id="sensitivity-table"></div>
+        </article>
+        <article class="panel">
+          <div class="panel-title">
+            <div>
+              <p class="eyebrow">WHOLE-CAMPAIGN FINANCIALS</p>
+              <h3>AI value is not campaign profit.</h3>
+            </div>
+            <span class="scope-badge">CAMPAIGN FILTER ONLY</span>
+          </div>
+          <p class="chart-note">
+            Department, product, model, prompt-date, and sensitivity controls do
+            not change these totals. Revenue and other spending belong to the
+            complete campaign.
+          </p>
+          <div id="profit-table"></div>
+        </article>
+      </section>
+      <section
+        id="workflow-view"
+        class="view"
+        aria-label="Workflow investigation"
+        hidden
+      >
+        <div class="story-strip">
+          <p>
+            <span class="eyebrow">INVESTIGATE, DON'T INFER CAUSATION</span
+            ><strong>Repeated work leaves a footprint.</strong> Compare rework,
+            correction prompts, changed briefs, and template use. Task mix and
+            estimates can explain differences; these observations do not prove
+            causation.
+          </p>
+        </div>
+        <div class="chart-grid">
+          <article class="panel">
+            <div class="panel-title">
+              <div>
+                <p class="eyebrow">MODEL &amp; PRODUCT MIX</p>
+                <h3>Volume, price, or both?</h3>
+              </div>
+            </div>
+            <div id="mix-table"></div>
+          </article>
+          <article class="panel">
+            <div class="panel-title">
+              <div>
+                <p class="eyebrow">RECORDED ISSUES</p>
+                <h3>Where does work repeat?</h3>
+              </div>
+            </div>
+            <div id="issues-table"></div>
+          </article>
+        </div>
+        <article class="panel">
+          <div class="panel-title">
+            <div>
+              <p class="eyebrow">COMPARE SIMILAR WORK</p>
+              <h3>Templates and changed briefs.</h3>
+            </div>
+            <label class="task-type-filter"
+              >Task type<select id="task-type">
+                <option value="">All task types</option>
+              </select></label
+            >
+          </div>
+          <p class="chart-note">
+            Choose a task type to reduce differences in the kind of work. Groups
+            can still differ in campaign, model, task difficulty, and who used a
+            template.
+          </p>
+          <div id="workflow-table"></div>
+        </article>
+        <article class="panel">
+          <div class="panel-title">
+            <div>
+              <p class="eyebrow">AUDIT THE CALCULATIONS</p>
+              <h3>One task. All its prompts. Hours counted once.</h3>
+            </div>
+            <button id="export" class="secondary-button" type="button">
+              Export selected tasks ↓
+            </button>
+          </div>
+          <p class="chart-note">
+            Completed solution data. Export includes token costs and calculated
+            answers. The learner ZIPs contain raw exercise data only.
+          </p>
+          <div id="task-table"></div>
+        </article>
+      </section>
+      <section id="methodology" class="reading-section">
+        <div class="reading-heading">
+          <p class="eyebrow">BEHIND THE DASHBOARD</p>
+          <h2>Transparent by design.</h2>
+          <p>
+            From a prompt to a business decision, every calculation has a
+            traceable source.
+          </p>
+        </div>
+        <div class="method-grid">
+          <div>
+            <span class="step-number">01</span>
+            <h3>Price the tokens.</h3>
+            <p>
+              Join each prompt to its model rate. Lite costs $10 input / $30
+              output per million tokens; Pro costs $40 / $100. These are fixed
+              fictional prices, not current vendor rates.
+            </p>
+            <code
+              >AI cost = (input tokens × input rate + output tokens × output
+              rate) / 1,000,000</code
+            >
+          </div>
+          <div>
+            <span class="step-number">02</span>
+            <h3>Count the work once.</h3>
+            <p>
+              Remove repeated IDs and standardize department names. Sum prompt
+              tokens and cost by task, then join the task’s hours. Actual time
+              includes preparation, review, and rework; rework is not added
+              again.
+            </p>
+            <code
+              >Net AI value = (baseline hours − actual hours) × $50 − AI
+              cost</code
+            >
+          </div>
+          <div>
+            <span class="step-number">03</span>
+            <h3>Keep the measures distinct.</h3>
+            <p>
+              ROI divides summed net AI value by summed AI cost. Zero
+              denominators display N/A. Campaign result also includes revenue
+              and other spending. Full campaign figures never inherit
+              partial-task filters.
+            </p>
+            <code
+              >Campaign result = revenue − other costs − actual hours × $50 − AI
+              cost</code
+            >
+          </div>
+        </div>
+        <details class="method-details">
+          <summary>Read findings, recommendations, and limitations</summary>
+          <div id="findings"></div>
+          <p>
+            Baseline hours are estimates for the same completed work at
+            acceptable quality. Both campaigns keep their net-value sign when
+            baseline estimates change by ±20%. A negative ROI below −100% is
+            possible when AI adds human effort.
+          </p>
+          <p>
+            This reproducible synthetic scenario illustrates a measurement
+            method; it is not evidence of a real company’s performance. There is
+            no causal experiment, employee ranking, prediction model, vendor
+            billing reconciliation, or realized payroll saving. September
+            activity is complete within this fictional dataset.
+          </p>
+          <p>
+            Data generation, analysis, dashboard implementation, and
+            documentation were prepared with Codex assistance and checked by
+            automated reconciliation. The learner exercise’s AI-assistance
+            guideline applies to learners, not to author preparation.
+          </p>
+        </details>
+      </section>
+      <section id="learn" class="reading-section learn-section">
+        <div class="reading-heading">
+          <p class="eyebrow">TWO WAYS TO MAKE IT YOURS</p>
+          <h2>Start with the question.<br />Build your own answer.</h2>
+          <p>
+            The demo is a completed solution. These standalone exercise
+            downloads keep the answers out.
+          </p>
+        </div>
+        <div class="learn-grid">
+          <article class="learn-card">
+            <span class="track-number">01 / PORTFOLIO PROJECT</span>
+            <h3>Go deeper.</h3>
+            <p>
+              Price individual prompts, model task effort, investigate workflow,
+              and build your own interactive analysis.
+            </p>
+            <ul>
+              <li>Intermediate · about 12–16 hours</li>
+              <li>Four CSVs · 240 unique tasks</li>
+              <li>Excel, SQL, BI, or code—your choice</li>
+            </ul>
+            <a
+              class="primary-button"
+              href="./downloads/mru-portfolio-project.zip"
+              download
+              >Download portfolio exercise <span>↓</span></a
+            >
+          </article>
+          <article class="learn-card">
+            <span class="track-number">02 / QUICK CHALLENGE</span>
+            <h3>Find the signal in four hours.</h3>
+            <p>
+              Clean a small task export, calculate costs, create PivotTables,
+              and make a supported recommendation.
+            </p>
+            <ul>
+              <li>Beginner / early intermediate · 4 hours</li>
+              <li>One CSV · 120 unique tasks</li>
+              <li>Excel or a basic BI tool · no code or account</li>
+            </ul>
+            <a
+              class="secondary-button"
+              href="./downloads/mru-quick-challenge.zip"
+              download
+              >Download quick challenge <span>↓</span></a
+            >
+          </article>
+        </div>
+      </section>
+      <footer>
+        <span>Built by Chris Delgado · Synthetic MRU case study</span
+        ><a
+          href="https://github.com/GlassHouse97/AI-Cost-Efficiency-Portfolio-Project"
+          >Explore the code ↗</a
+        ><a
+          href="https://portfolio.chrisdelgado.workers.dev/projects/ai-cost-efficiency/"
+          >Read the portfolio case study ↗</a
+        >
+      </footer>
+    </main>
+  </body>
+</html>

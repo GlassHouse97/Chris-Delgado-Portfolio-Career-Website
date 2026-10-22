@@ -9,9 +9,15 @@ interface Props {
   repo: string;
   accent: string;
   showStats?: boolean;
+  primaryHref?: string;
+  primaryLabel?: string;
 }
 
-const { title, description, eyebrow, emoji, repo, accent, showStats = true } = Astro.props;
+const {
+  title, description, eyebrow, emoji, repo, accent, showStats = true,
+  primaryHref = repo, primaryLabel = "View on GitHub",
+} = Astro.props;
+const primaryExternal = primaryHref.startsWith("https://");
 ---
 
 <BaseLayout title={`${title} | Chris Delgado`} description={description}>
@@ -24,7 +30,7 @@ const { title, description, eyebrow, emoji, repo, accent, showStats = true } = A
           <h1><span aria-hidden="true">{emoji}</span> {title}</h1>
           <p class="hero-description">{description}</p>
           <div class="button-row">
-            <a class="button button-primary" href={repo} target="_blank" rel="noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
+            <a class="button button-primary" href={primaryHref} target={primaryExternal ? "_blank" : undefined} rel={primaryExternal ? "noreferrer" : undefined}>{primaryLabel} <span aria-hidden="true">{primaryExternal ? "↗" : "→"}</span></a>
             <slot name="hero-action" />
           </div>
         </div>
@@ -49,7 +55,7 @@ const { title, description, eyebrow, emoji, repo, accent, showStats = true } = A
     </div>
 
     <nav class="project-nav shell" aria-label="Portfolio projects">
-      <a href="/#work"><span>Explore</span><strong>All three projects</strong></a>
+      <a href="/#work"><span>Explore</span><strong>All projects</strong></a>
       <a href="/#contact"><span>Next step</span><strong>Let's connect →</strong></a>
     </nav>
   </article>
@@ -164,6 +170,10 @@ const { title, description, eyebrow, emoji, repo, accent, showStats = true } = A
   :global(.project-section:first-child) {
     padding-top: 0;
     border-top: 0;
+  }
+
+  :global(.project-section > div) {
+    min-width: 0;
   }
 
   :global(.project-section h2) {

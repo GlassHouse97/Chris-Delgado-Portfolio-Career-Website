@@ -1,0 +1,194 @@
+---
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+
+const workflow = [
+  ["01", "Validate the inputs", "Check keys, missing values, token counts, rates, and relationships before calculating results."],
+  ["02", "Respect the grain", "Aggregate prompt costs to each campaign and task before joining task hours. Roll up to the campaign before joining revenue and other spending, so repeated prompts cannot multiply time or revenue."],
+  ["03", "Separate the measures", "Keep token spend, Net AI value, ROI, and campaign result distinct so each answers a different question."],
+  ["04", "Challenge the baseline", "Move estimated no-AI hours by ±20%, hold observed hours and AI costs fixed, and check whether the decision changes."],
+];
+---
+
+<ProjectLayout
+  title="AI Cost Efficiency"
+  description="An interactive, reproducible case study of when AI earns back its cost—and when it does not. Explore token spend, Net AI value, and campaign results using a transparent fictional dataset."
+  eyebrow="Featured dashboard · Synthetic business case"
+  emoji="↗"
+  repo="https://github.com/GlassHouse97/AI-Cost-Efficiency-Portfolio-Project"
+  accent="#79e0ba"
+  primaryHref="/ai-cost-efficiency/"
+  primaryLabel="Open dashboard"
+>
+  <a slot="hero-action" class="button" href="https://github.com/GlassHouse97/AI-Cost-Efficiency-Portfolio-Project" target="_blank" rel="noreferrer">Code & learner tracks <span aria-hidden="true">↗</span></a>
+
+  <div slot="hero-visual" class="outcome-board">
+    <div class="board-heading"><span>Two campaigns in focus.</span><small>Synthetic data</small></div>
+    <p class="board-question">Is the time worth<br /><em>the token spend?</em></p>
+    <div class="outcome-row positive">
+      <span><b>Campaign 1</b><small>100 hours saved</small></span>
+      <strong>+$4,500<small>Net AI value</small></strong>
+    </div>
+    <div class="outcome-row negative">
+      <span><b>Campaign 2</b><small>70 extra hours</small></span>
+      <strong>−$4,900<small>Net AI value</small></strong>
+    </div>
+    <p class="board-note">At $50/hour, after AI cost. Time value is not cash savings.</p>
+  </div>
+
+  <div slot="stats" class="stat"><strong>4 campaigns</strong><span>Fictional source dataset</span></div>
+  <div slot="stats" class="stat"><strong>$50/hour</strong><span>Assumed time value</span></div>
+  <div slot="stats" class="stat"><strong>±20%</strong><span>No-AI baseline test</span></div>
+  <div slot="stats" class="stat"><strong>2 tracks</strong><span>Learn the analysis</span></div>
+
+  <section class="project-section">
+    <div><span class="section-number">01</span><h2>The business question</h2></div>
+    <div class="body-copy">
+      <p>Lower token spend is useful only in the context of the work it helps deliver.</p>
+      <p>This project asks whether AI use creates enough time value to cover its cost, which work needs attention, and whether the conclusion survives uncertainty in the no-AI estimate. The dashboard brings the financial model and its assumptions into the same view.</p>
+      <div class="callout"><strong>A transparent demonstration.</strong> MRU and ChatABC are fictional. The dataset is synthetic and pricing is fixed for this exercise; it is not a current vendor price comparison. The completed dashboard includes the answers.</div>
+    </div>
+  </section>
+
+  <section class="project-section">
+    <div><span class="section-number">02</span><h2>How the model works</h2></div>
+    <div class="body-copy">
+      <p>The calculation starts at the prompt and ends at a business decision.</p>
+      <div class="workflow-grid">
+        {workflow.map(([number, title, description]) => (
+          <article><span>{number}</span><h3>{title}</h3><p>{description}</p></article>
+        ))}
+      </div>
+      <dl class="formula-list">
+        <div><dt>AI cost</dt><dd>(Input tokens × input rate + output tokens × output rate) ÷ 1,000,000, using rates in dollars per million tokens.</dd></div>
+        <div><dt>Hours saved</dt><dd>Estimated hours without AI − actual hours with AI. A negative result means the work took longer.</dd></div>
+        <div><dt>Net AI value</dt><dd>Hours saved × $50/hour − AI cost.</dd></div>
+        <div><dt>AI ROI</dt><dd>Net AI value ÷ AI cost × 100. The denominator is AI spend, so this is not a campaign profit margin.</dd></div>
+        <div><dt>Campaign result</dt><dd>Campaign revenue − other campaign spending − (actual hours × $50) − AI cost. It is a separate measure of the overall campaign.</dd></div>
+      </dl>
+      <p>The $50 hourly value is an explicit assumption. Saved capacity becomes cash savings only if actual spending falls; the dashboard does not make that claim. Estimated no-AI hours also do not establish that AI caused an observed outcome.</p>
+    </div>
+  </section>
+
+  <section class="project-section">
+    <div><span class="section-number">03</span><h2>What the example shows</h2></div>
+    <div class="body-copy">
+      <p>Campaign 1 supports continued use. Campaign 2 needs a closer look at the workflow.</p>
+      <p>These two campaigns provide the focal comparison within the four-campaign synthetic dataset.</p>
+      <div class="table-scroll" role="region" aria-label="Synthetic campaign results" tabindex="0">
+        <table>
+          <caption>Fixed fictional scenario · $50 per hour</caption>
+          <thead><tr><th scope="col">Measure</th><th scope="col">Campaign 1</th><th scope="col">Campaign 2</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Hours saved</th><td class="positive">100 h</td><td class="negative">−70 h</td></tr>
+            <tr><th scope="row">AI cost</th><td>$500</td><td>$1,400</td></tr>
+            <tr><th scope="row">Net AI value</th><td class="positive">+$4,500</td><td class="negative">−$4,900</td></tr>
+            <tr><th scope="row">AI ROI</th><td class="positive">900%</td><td class="negative">−350%</td></tr>
+            <tr><th scope="row">Campaign result</th><td class="positive">$7,500</td><td class="negative">−$2,400</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Campaign 1's 100 saved hours have an assumed value of $5,000; subtracting $500 of AI spend leaves $4,500. Campaign 2's 70 additional hours cost $3,500 in modeled time before its $1,400 AI spend is included.</p>
+      <div class="sensitivity-panel">
+        <span class="mini-label">Sensitivity · no-AI hours ±20%</span>
+        <h3>The signs hold across the tested range.</h3>
+        <div class="range-row"><b>Campaign 1</b><span class="positive">+$2,100 → +$6,900</span></div>
+        <div class="range-row"><b>Campaign 2</b><span class="negative">−$6,900 → −$2,900</span></div>
+        <p>Ranges show Net AI value while actual hours and AI costs stay fixed. This is a scenario test, not a confidence interval or proof of causality.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-section">
+    <div><span class="section-number">04</span><h2>Three recommendations</h2></div>
+    <div class="body-copy">
+      <ol class="recommendations">
+        <li><strong>Expand Campaign 1-style use selectively.</strong> Its modeled result stays positive in the sensitivity test. Pilot comparable work and check delivery quality before extending the conclusion.</li>
+        <li><strong>Redesign the Campaign 2 workflow before scaling it.</strong> Inspect costly tasks, repeated prompts, and rework. Test changes against a recorded baseline instead of assuming a cheaper model alone fixes the problem.</li>
+        <li><strong>Measure outcomes alongside spend.</strong> Track actual effort, review and correction time, output quality, and revenue. Revisit the no-AI baseline and keep time value separate from realized cash savings.</li>
+      </ol>
+      <div class="button-row">
+        <a class="button button-primary" href="/ai-cost-efficiency/">Explore the dashboard <span aria-hidden="true">→</span></a>
+        <a class="button" href="https://github.com/GlassHouse97/AI-Cost-Efficiency-Portfolio-Project" target="_blank" rel="noreferrer">Inspect the analysis <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-section" id="learn">
+    <div><span class="section-number">05</span><h2>Try the analysis yourself</h2></div>
+    <div class="body-copy">
+      <p>Two downloadable tracks let you choose how deep to go.</p>
+      <p>The live dashboard is the completed demonstration. Start with a learner download if you want to solve the case before reviewing the answers.</p>
+      <div class="track-grid">
+        <article class="track-card">
+          <span class="mini-label">Beginner · About 4 hours</span>
+          <h3>Quick Challenge</h3>
+          <p>Use Excel to calculate costs, compare campaigns, and write a concise recommendation. A smaller scope keeps the focus on the business reasoning.</p>
+          <span class="track-note">Direct download · No website account</span>
+          <a class="button" href="/ai-cost-efficiency/downloads/mru-quick-challenge.zip" download>Download quick challenge <span aria-hidden="true">↓</span></a>
+        </article>
+        <article class="track-card">
+          <span class="mini-label">Deeper analysis · 12–16 hours</span>
+          <h3>Portfolio Project</h3>
+          <p>Work through the detailed data model, prompt costs, campaign economics, and sensitivity analysis. Build your own evidence and explain the decisions it supports.</p>
+          <span class="track-note">Direct download · No website account</span>
+          <a class="button" href="/ai-cost-efficiency/downloads/mru-portfolio-project.zip" download>Download portfolio project <span aria-hidden="true">↓</span></a>
+        </article>
+      </div>
+      <p class="repo-note">The <a href="https://github.com/GlassHouse97/AI-Cost-Efficiency-Portfolio-Project" target="_blank" rel="noreferrer">GitHub repository</a> connects both learning tracks with the completed dashboard and reproducible solution.</p>
+    </div>
+  </section>
+</ProjectLayout>
+
+<style>
+  .positive { color: #79e0ba; }
+  .negative { color: #ff9b90; }
+  .outcome-board { padding: clamp(1.4rem, 4vw, 2rem); border: 1px solid rgba(121, 224, 186, 0.3); border-radius: 22px; background: linear-gradient(145deg, #132c32, #0b1729 60%); box-shadow: var(--shadow); }
+  .board-heading { display: flex; flex-wrap: wrap; gap: 0.65rem; justify-content: space-between; color: #79e0ba; font-family: var(--font-mono); font-size: 0.6rem; }
+  .board-heading small { color: var(--ink-muted); font-size: inherit; }
+  .board-question { margin: 2rem 0; font-family: var(--font-display); font-size: clamp(2rem, 3vw, 2.7rem); line-height: 1.12; }
+  .board-question em { color: #79e0ba; }
+  .outcome-row { display: flex; gap: 1rem; align-items: center; justify-content: space-between; padding: 1.3rem 0; border-top: 1px solid var(--line); }
+  .outcome-row > span { display: grid; gap: 0.3rem; }
+  .outcome-row b { color: var(--ink); font-size: 1rem; }
+  .outcome-row strong { font-size: clamp(1.55rem, 2.5vw, 2.1rem); text-align: right; font-variant-numeric: tabular-nums; }
+  .outcome-row small { display: block; color: var(--ink-muted); font-size: 0.66rem; font-weight: 400; }
+  .board-note { margin: 1rem 0 0; color: var(--ink-muted); font-size: 0.7rem; }
+  .workflow-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-block: 2rem; }
+  .workflow-grid article, .track-card { padding: 1.5rem; border: 1px solid var(--line); border-radius: 16px; background: rgba(255, 255, 255, 0.025); }
+  .workflow-grid article > span, .mini-label { color: #79e0ba; font-family: var(--font-mono); font-size: 0.68rem; }
+  .workflow-grid h3 { margin: 1rem 0 0.6rem; font-size: 1rem; }
+  .workflow-grid p { margin: 0; font-size: 0.9rem; }
+  .formula-list { margin-block: 2.5rem; }
+  .formula-list > div { display: grid; grid-template-columns: 135px minmax(0, 1fr); gap: 1.3rem; padding: 1rem 0; border-top: 1px solid var(--line); }
+  .formula-list dt { color: var(--ink); font-weight: 700; font-size: 0.85rem; }
+  .formula-list dd { margin: 0; color: var(--ink-muted); font-size: 0.9rem; }
+  .table-scroll { max-width: 100%; overflow-x: auto; margin-block: 2rem; border: 1px solid var(--line); border-radius: 14px; }
+  .table-scroll:focus-visible { outline: 2px solid #79e0ba; outline-offset: 4px; }
+  table { width: 100%; min-width: 400px; border-collapse: collapse; font-size: 0.88rem; font-variant-numeric: tabular-nums; }
+  caption { padding: 0.9rem 1.2rem; color: var(--ink-muted); background: rgba(255, 255, 255, 0.025); text-align: left; font-size: 0.7rem; }
+  th, td { padding: 0.9rem 1.2rem; border-top: 1px solid var(--line); }
+  th { text-align: left; }
+  td, thead th:not(:first-child) { text-align: right; white-space: nowrap; }
+  tbody th { color: var(--ink-muted); font-weight: 400; }
+  .sensitivity-panel { margin-top: 2rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: 16px; background: rgba(121, 224, 186, 0.035); }
+  .sensitivity-panel h3 { margin: 0.8rem 0 1.2rem; font-size: 1.15rem; }
+  .range-row { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: space-between; padding-block: 0.65rem; border-top: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+  .range-row b { font-size: 0.85rem; }
+  .sensitivity-panel p { margin: 1rem 0 0; font-size: 0.78rem; }
+  .recommendations { padding-left: 1.5rem; margin: 0 0 2.5rem; }
+  .recommendations li { padding: 0 0 1.3rem 0.4rem; }
+  .recommendations li::marker { color: #79e0ba; font-family: var(--font-mono); }
+  .track-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 2rem; }
+  .track-card { display: flex; flex-direction: column; align-items: flex-start; }
+  .track-card h3 { margin: 0.9rem 0; font-size: 1.2rem; }
+  .track-card p { font-size: 0.88rem; }
+  .track-note { margin-top: auto; padding-block: 0.5rem 1rem; color: var(--ink-muted); font-size: 0.7rem; }
+  .track-card .button { width: 100%; min-height: 48px; padding-inline: 0.85rem; font-size: 0.75rem; }
+  .repo-note { margin-top: 1.5rem; font-size: 0.87rem; }
+  .repo-note a { color: #79e0ba; }
+  @media (max-width: 620px) {
+    .workflow-grid, .track-grid { grid-template-columns: 1fr; }
+    .formula-list > div { grid-template-columns: 1fr; gap: 0.4rem; }
+    .outcome-row small { font-size: 0.6rem; }
+  }
+</style>

@@ -34,7 +34,7 @@ const toolGroups = [
         awkward workflows, and real-world problems into clear answers and working tools.
       </p>
       <div class="button-row">
-        <a class="button button-primary" href="#work">Explore my work <span aria-hidden="true">↓</span></a>
+        <a class="button button-primary" href="/ai-cost-efficiency/">Open AI dashboard <span aria-hidden="true">→</span></a>
         <a class="button" href="/resume/chris-delgado-resume-2026.pdf" download="Chris Delgado Resume 2026.pdf">Download resume <span aria-hidden="true">↓</span></a>
         <a class="button" href="https://github.com/GlassHouse97" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
       </div>
@@ -42,18 +42,18 @@ const toolGroups = [
     </div>
 
     <div class="hero-board" aria-label="Highlights from Chris's portfolio">
-      <div class="board-label">Three projects. Three kinds of problems.</div>
+      <div class="board-label">Featured: AI cost efficiency</div>
       <div class="signal-card signal-data">
+        <span class="signal-icon" aria-hidden="true">↗</span>
+        <small>Synthetic case · Campaign 1</small>
+        <strong>+$4.5k</strong>
+        <span>Net AI value<br />modeled time value · not cash savings</span>
+      </div>
+      <div class="signal-card signal-build">
         <span class="signal-icon" aria-hidden="true">📊</span>
         <small>Analyzed</small>
         <strong>3.7M</strong>
-        <span>transaction rows</span>
-      </div>
-      <div class="signal-card signal-build">
-        <span class="signal-icon" aria-hidden="true">🐉</span>
-        <small>Bundled</small>
-        <strong>319</strong>
-        <span>SRD spells</span>
+        <span>distributor transaction rows</span>
       </div>
       <div class="signal-card signal-logic">
         <span class="signal-icon" aria-hidden="true">🎯</span>
@@ -70,14 +70,37 @@ const toolGroups = [
 
   <section id="work" class="section work-section shell">
     <span class="section-kicker">Selected work</span>
-    <h2 class="section-heading">Built from real questions, not tutorial prompts.</h2>
+    <h2 class="section-heading">From a business question to a working answer.</h2>
     <p class="section-intro">
-      One business analysis, one full-stack product, and one very specific scheduling problem.
-      Together, they show how I move from ambiguity to something people can use.
+      Start with an interactive look at AI cost and time value. Explore the assumptions,
+      trace the calculations, then see more of my analysis, application, and automation work.
     </p>
 
     <ProjectCard
-      index="01 / Analytics"
+      index="01 / Featured dashboard"
+      emoji="↗"
+      title="AI Cost Efficiency"
+      summary="Does AI earn back its cost? Explore four fictional campaigns through token spend, Net AI value, campaign results, and a baseline sensitivity test. A completed dashboard, reproducible analysis, and two learner tracks make every result inspectable."
+      href="/projects/ai-cost-efficiency/"
+      repo="https://github.com/GlassHouse97/AI-Cost-Efficiency-Portfolio-Project"
+      live="/ai-cost-efficiency/"
+      liveLabel="Open dashboard"
+      accent="#79e0ba"
+      skills={["Python", "SQL", "Data modeling", "Interactive dashboard", "ROI analysis"]}
+    >
+      <div slot="preview" class="ai-preview">
+        <div class="ai-preview-top"><span>MRU / AI COST EFFICIENCY</span><small>Synthetic case study</small></div>
+        <h4>Same tool.<br /><em>Different outcomes.</em></h4>
+        <div class="ai-outcomes">
+          <div class="ai-outcome positive"><span>Campaign 1</span><strong>+$4,500</strong><small>Net AI value</small><i aria-hidden="true"></i><b>100 hours saved</b></div>
+          <div class="ai-outcome negative"><span>Campaign 2</span><strong>−$4,900</strong><small>Net AI value</small><i aria-hidden="true"></i><b>70 extra hours</b></div>
+        </div>
+        <p>$50/hour time value · AI costs included · not cash savings</p>
+      </div>
+    </ProjectCard>
+
+    <ProjectCard
+      index="02 / Analytics"
       emoji="📊"
       title="Revenue Quality & Customer Profitability"
       summary="A reproducible analysis of 3.7 million anonymized transactions, from raw annual files to a validated SQLite model and executive-ready business story."
@@ -97,7 +120,7 @@ const toolGroups = [
     </ProjectCard>
 
     <ProjectCard
-      index="02 / Application"
+      index="03 / Application"
       emoji="🐉"
       title="DND and Beyond"
       summary="A personal full-stack Python project built to demonstrate my technical range through calculated character sheets, persistent campaigns, initiative, and production deployment."
@@ -128,7 +151,7 @@ const toolGroups = [
     </ProjectCard>
 
     <ProjectCard
-      index="03 / Automation"
+      index="04 / Automation"
       emoji="🎯"
       title="Dart League Schedule & Standings"
       summary="Another personal Python project built around a real league problem, showing how I turn messy rules and scheduling constraints into reliable tools people can actually use."
@@ -360,6 +383,11 @@ const toolGroups = [
     font-size: clamp(2.8rem, 5vw, 4.4rem);
   }
 
+  .signal-data strong {
+    font-size: clamp(2rem, 3.4vw, 3.2rem);
+    letter-spacing: -0.04em;
+  }
+
   .signal-card > span:last-child {
     margin-top: 0.6rem;
     color: var(--ink-muted);
@@ -421,6 +449,56 @@ const toolGroups = [
     width: 100%;
     padding: clamp(1.2rem, 4vw, 3rem);
   }
+
+  .ai-preview {
+    width: 100%;
+    padding: clamp(1.4rem, 3vw, 2.5rem);
+  }
+
+  .ai-preview-top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: space-between;
+    color: #79e0ba;
+    font-family: var(--font-mono);
+    font-size: 0.59rem;
+    letter-spacing: 0.04em;
+  }
+
+  .ai-preview-top small { color: var(--ink-muted); font-size: inherit; }
+
+  .ai-preview h4 {
+    margin: 2rem 0 1.8rem;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
+  .ai-preview h4 em { color: #79e0ba; }
+
+  .ai-outcomes { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+
+  .ai-outcome {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: rgba(7, 17, 31, 0.8);
+  }
+
+  .ai-outcome > span { color: var(--ink-muted); font-size: 0.73rem; }
+  .ai-outcome strong { margin-top: 0.7rem; font-size: clamp(1.35rem, 2.3vw, 2rem); font-variant-numeric: tabular-nums; }
+  .ai-outcome small { margin-top: 0.2rem; color: var(--ink-muted); font-size: 0.62rem; }
+  .ai-outcome i { display: block; width: 88%; height: 5px; margin: 1.1rem 0 0.65rem; border-radius: 5px; background: currentColor; }
+  .ai-outcome b { font-size: 0.65rem; font-weight: 500; }
+  .ai-outcome.positive { color: #79e0ba; }
+  .ai-outcome.negative { color: #ff9b90; }
+  .ai-outcome.negative i { width: 96%; }
+  .ai-preview > p { margin: 1rem 0 0; color: var(--ink-muted); font-size: 0.62rem; }
 
   .preview-window {
     overflow: hidden;
