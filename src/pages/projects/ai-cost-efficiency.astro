@@ -11,15 +11,15 @@ const workflow = [
 
 <ProjectLayout
   title="AI Cost Efficiency & Workflow Value"
-  description="A personal analytics project I built with Codex assistance to examine whether AI saves enough staff time to cover its fees. Follow 240 tasks and 3,360 prompts through costs, review, rework, and campaign results in a fictional business case."
-  eyebrow="Featured dashboard · Synthetic business case"
+  description="A portfolio project I created for fellow learners to download and follow along with. Explore a fictional agency's AI costs, build your own analysis, and turn your findings into a piece for your own portfolio. My completed dashboard and solutions are available when you're ready to compare."
+  eyebrow="Downloadable portfolio project · Two learner tracks"
   emoji="↗"
   repo="https://github.com/GlassHouse97/AI-Cost-Efficiency-Portfolio-Project"
   accent="#79e0ba"
-  primaryHref="https://ai-cost-efficiency-860922042669.us-east1.run.app"
-  primaryLabel="Open dashboard"
+  primaryHref="#learn"
+  primaryLabel="Download & follow along"
 >
-  <a slot="hero-action" class="button" href="https://github.com/GlassHouse97/AI-Cost-Efficiency-Portfolio-Project" target="_blank" rel="noreferrer">Code & learner tracks <span aria-hidden="true">↗</span></a>
+  <a slot="hero-action" class="button" href="https://ai-cost-efficiency-860922042669.us-east1.run.app" target="_blank" rel="noreferrer">View my completed dashboard <span aria-hidden="true">↗</span></a>
 
   <div slot="hero-visual" class="outcome-board">
     <div class="board-heading"><span>Two campaigns in focus.</span><small>Synthetic data</small></div>
@@ -43,7 +43,8 @@ const workflow = [
   <section class="project-section">
     <div><span class="section-number">01</span><h2>The business question</h2></div>
     <div class="body-copy">
-      <p>Lower token spend is useful only in the context of the work it helps deliver.</p>
+      <p>A business question you can turn into your own portfolio project.</p>
+      <p>I built this as both a demonstration of my work and a project other learners could take on. You get the source data, business questions, and instructions. Choose your tools, work through the analysis, and publish your own findings and recommendations in your portfolio.</p>
       <p>I wanted to look past the AI bill and ask what happened to the work itself. This project counts preparation, prompting, review, and rework, then tests whether the estimated time value still covers the fees when the no-AI baseline changes.</p>
       <div class="callout"><strong>A fictional business case.</strong> Marketing R Us and ChatABC are fictional. All records and prices were created for this exercise. The live dashboard includes the completed analysis.</div>
     </div>
@@ -116,20 +117,26 @@ const workflow = [
   <section class="project-section" id="learn">
     <div><span class="section-number">05</span><h2>Try the analysis yourself</h2></div>
     <div class="body-copy">
-      <p>Two downloadable tracks let you choose how deep to go.</p>
-      <p>The live dashboard is the completed demonstration. Start with a learner download if you want to solve the case before reviewing the answers.</p>
+      <p>Download the case. Work through it. Make it a portfolio piece of your own.</p>
+      <p>Both tracks include an Excel workbook, CSV source files, and full instructions. Extract the ZIP and open <strong>START_HERE.html</strong>. The learner packages contain the questions and data so you can build your own answer before looking at mine.</p>
+      <ol class="learner-steps">
+        <li><strong>Choose a track.</strong> Pick the shorter Excel challenge or the full portfolio project.</li>
+        <li><strong>Follow the assignment.</strong> Clean the data, calculate the costs, and test the assumptions with the tools you want to practice.</li>
+        <li><strong>Build your own result.</strong> Create a workbook, dashboard, or written analysis that explains what you found.</li>
+        <li><strong>Add it to your portfolio.</strong> Link the source exercise, explain your approach, and show your own conclusions.</li>
+      </ol>
       <div class="track-grid">
         <article class="track-card">
           <span class="mini-label">Beginner · About 4 hours</span>
           <h3>Quick Challenge</h3>
-          <p>Use Excel to calculate costs, compare campaigns, and write a concise recommendation. A smaller scope keeps the focus on the business reasoning.</p>
+          <p>Start with 120 tasks from two campaigns. Use Excel or a BI tool to calculate AI costs, compare results, and build a concise recommendation you can share.</p>
           <span class="track-note">Direct download · No website account</span>
           <a class="button" href="https://raw.githubusercontent.com/GlassHouse97/AI-Cost-Efficiency-Portfolio-Project/main/DATA/TRACKS/quick-challenge/mru-quick-challenge.zip">Download quick challenge <span aria-hidden="true">↓</span></a>
         </article>
         <article class="track-card">
           <span class="mini-label">Deeper analysis · 12–16 hours</span>
           <h3>Portfolio Project</h3>
-          <p>Work through the detailed data model, prompt costs, campaign economics, and sensitivity analysis. Build your own evidence and explain the decisions it supports.</p>
+          <p>Explore 240 tasks and 3,360 prompts across four campaigns. Use Excel, SQL, Python, or BI to investigate workflow value and create your own dashboard or case study.</p>
           <span class="track-note">Direct download · No website account</span>
           <a class="button" href="https://raw.githubusercontent.com/GlassHouse97/AI-Cost-Efficiency-Portfolio-Project/main/DATA/TRACKS/portfolio-project/mru-portfolio-project.zip">Download portfolio project <span aria-hidden="true">↓</span></a>
         </article>
@@ -180,6 +187,9 @@ const workflow = [
   .recommendations li { padding: 0 0 1.3rem 0.4rem; }
   .recommendations li::marker { color: #79e0ba; font-family: var(--font-mono); }
   .track-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 2rem; }
+  .learner-steps { padding-left: 1.4rem; margin-block: 1.5rem 2rem; }
+  .learner-steps li { padding-left: 0.3rem; }
+  .learner-steps li::marker { color: #79e0ba; }
   .track-card { display: flex; flex-direction: column; align-items: flex-start; }
   .track-card h3 { margin: 0.9rem 0; font-size: 1.2rem; }
   .track-card p { font-size: 0.88rem; }

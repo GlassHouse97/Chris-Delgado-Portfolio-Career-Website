@@ -8,10 +8,10 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build",
-    "check": "astro check",
+    "build": "node scripts/validate-projects.mjs && astro check && astro build && node scripts/validate-site.mjs",
+    "check": "node scripts/validate-projects.mjs && astro check",
     "preview": "astro preview",
-    "deploy:check": "wrangler deploy --dry-run",
+    "deploy:check": "node scripts/validate-site.mjs && wrangler deploy --dry-run",
     "deploy": "wrangler deploy"
   },
   "dependencies": {

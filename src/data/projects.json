@@ -1,0 +1,54 @@
+[
+  {
+    "slug": "distributor-case-study",
+    "category": "Analytics",
+    "emoji": "📊",
+    "title": "Revenue Quality & Customer Profitability",
+    "summary": "A reproducible analysis of 3.7 million anonymized transactions, from raw annual files to a validated SQLite model and executive-ready business story.",
+    "caseStudy": "/projects/distributor-case-study/",
+    "repo": "https://github.com/GlassHouse97/Distributor-Company-Case-Study",
+    "live": "https://github.com/GlassHouse97/Distributor-Company-Case-Study/blob/main/SOLUTION/EXECUTIVE_SUMMARY.md",
+    "liveLabel": "View live case study",
+    "accent": "#7cc8ff",
+    "skills": ["SQL", "Python", "pandas", "SQLite", "Business analysis"],
+    "preview": "distributor"
+  },
+  {
+    "slug": "ai-cost-efficiency",
+    "category": "Download & follow along",
+    "emoji": "🤖",
+    "title": "AI Cost Efficiency & Workflow Value",
+    "summary": "A portfolio project I created for fellow learners to download, work through, and make their own. Choose a quick Excel challenge or the full analysis, investigate a fictional agency's AI costs, and build a finished piece for your own portfolio. My dashboard and worked solutions are there when you're ready to compare.",
+    "caseStudy": "/projects/ai-cost-efficiency/",
+    "repo": "https://github.com/GlassHouse97/AI-Cost-Efficiency-Portfolio-Project",
+    "live": "/projects/ai-cost-efficiency/#learn",
+    "liveLabel": "Download & follow along",
+    "accent": "#79e0ba",
+    "skills": ["Excel", "Python", "SQL", "Business analysis", "AI cost analysis"],
+    "preview": "ai"
+  },
+  {
+    "slug": "dnd-and-beyond",
+    "category": "Application",
+    "emoji": "🐉",
+    "title": "DND and Beyond",
+    "summary": "A personal full-stack Python project built to demonstrate my technical range through calculated character sheets, persistent campaigns, initiative, and production deployment.",
+    "caseStudy": "/projects/dnd-and-beyond/",
+    "repo": "https://github.com/GlassHouse97/DND-And-Beyond",
+    "accent": "#a8b4ff",
+    "skills": ["Python", "Reflex", "PostgreSQL", "Docker", "Cloud Run"],
+    "preview": "dnd"
+  },
+  {
+    "slug": "darts-league",
+    "category": "Automation",
+    "emoji": "🎯",
+    "title": "Dart League Schedule & Standings",
+    "summary": "Another personal Python project built around a real league problem, showing how I turn messy rules and scheduling constraints into reliable tools people can actually use.",
+    "caseStudy": "/projects/darts-league/",
+    "repo": "https://github.com/GlassHouse97/Darts-League-Schedule",
+    "accent": "#ff8f80",
+    "skills": ["Python", "Constraint logic", "Playwright", "JSON", "ReportLab"],
+    "preview": "darts"
+  }
+]

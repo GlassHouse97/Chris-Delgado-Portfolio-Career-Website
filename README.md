@@ -1,6 +1,6 @@
 # Chris Delgado Portfolio
 
-A static Astro portfolio for Chris Delgado, featuring AI Cost Efficiency & Workflow Value alongside three case studies across data analysis, full-stack Python development, and practical automation.
+A static Astro portfolio for Chris Delgado, presenting projects across data analysis, application development, and practical automation. The AI Cost Efficiency case also includes downloadable exercises fellow learners can turn into their own portfolio work.
 
 ## Live site
 
@@ -9,7 +9,7 @@ A static Astro portfolio for Chris Delgado, featuring AI Cost Efficiency & Workf
 ## Pages
 
 - `/` - portfolio homepage
-- `/projects/ai-cost-efficiency/` - AI case study with links to the live dashboard and both learner downloads
+- `/projects/ai-cost-efficiency/` - follow-along portfolio project, two learner downloads, and my completed analysis
 - `/ai-cost-efficiency/` - retained local copy of the earlier dashboard
 - `/projects/distributor-case-study/` - revenue quality and customer profitability analysis
 - `/projects/dnd-and-beyond/` - full-stack Python campaign application
@@ -30,7 +30,7 @@ Astro will print the local preview address. Open that address in a browser to re
 npm run build
 ```
 
-The static site is written to `dist/`.
+The build validates the project catalog and deployment configuration, runs Astro checks, writes the static site to `dist/`, and checks the built internal links and assets. The same checks run inside Cloudflare. GitHub Actions also runs the build and deployment dry run on pushes and pull requests.
 
 ## Cloudflare Workers deployment
 
@@ -52,7 +52,8 @@ The current AI dashboard is hosted independently on [Google Cloud Run](https://a
 
 ## Updating the portfolio
 
-- Homepage content: `src/pages/index.astro`
+- **Add or update a project:** edit `src/data/projects.json`. The homepage cards are generated automatically. Follow the [step-by-step guide](docs/ADDING_PROJECTS.md) for a copyable example, optional screenshots, and dedicated case-study pages.
+- Homepage introduction and toolbox: `src/pages/index.astro`
 - Project case studies: `src/pages/projects/`
 - Shared styles: `src/styles/global.css`
 - Shared layouts and navigation: `src/layouts/` and `src/components/`

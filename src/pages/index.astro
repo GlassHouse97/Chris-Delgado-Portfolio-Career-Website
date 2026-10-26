@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
+import projects from "../data/projects";
 
 const toolGroups = [
   {
@@ -39,7 +40,7 @@ const toolGroups = [
         awkward workflows, and real-world problems into clear answers and working tools.
       </p>
       <div class="button-row">
-        <a class="button button-primary" href="https://ai-cost-efficiency-860922042669.us-east1.run.app" target="_blank" rel="noreferrer">Open AI dashboard <span aria-hidden="true">↗</span></a>
+        <a class="button button-primary" href="#work">Explore my work <span aria-hidden="true">→</span></a>
         <a class="button" href="/resume/chris-delgado-resume-2026.pdf" download="Chris Delgado Resume 2026.pdf">Download resume <span aria-hidden="true">↓</span></a>
         <a class="button" href="https://github.com/GlassHouse97" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
       </div>
@@ -47,18 +48,18 @@ const toolGroups = [
     </div>
 
     <div class="hero-board" aria-label="Highlights from Chris's portfolio">
-      <div class="board-label">Featured: AI cost efficiency</div>
+      <div class="board-label">A little analysis. A little building.</div>
       <div class="signal-card signal-data">
         <span class="signal-icon" aria-hidden="true">↗</span>
-        <small>Synthetic case · Campaign 1</small>
-        <strong>+$4.5k</strong>
-        <span>Net AI value<br />modeled time value · not cash savings</span>
-      </div>
-      <div class="signal-card signal-build">
-        <span class="signal-icon" aria-hidden="true">📊</span>
         <small>Analyzed</small>
         <strong>3.7M</strong>
-        <span>distributor transaction rows</span>
+        <span>transaction rows turned<br />into a business story</span>
+      </div>
+      <div class="signal-card signal-build">
+        <span class="signal-icon" aria-hidden="true">🛠️</span>
+        <small>Built with</small>
+        <strong>Python</strong>
+        <span>analysis, applications,<br />and everyday automation</span>
       </div>
       <div class="signal-card signal-logic">
         <span class="signal-icon" aria-hidden="true">🎯</span>
@@ -77,64 +78,44 @@ const toolGroups = [
     <span class="section-kicker">Selected work</span>
     <h2 class="section-heading">From a business question to a working answer.</h2>
     <p class="section-intro">
-      Start with an interactive look at AI cost and time value. Explore the assumptions,
-      trace the calculations, then see more of my analysis, application, and automation work.
+      A few projects showing how I work through business questions, build applications,
+      and make everyday problems easier to solve. Pick the one that interests you.
     </p>
 
-    <ProjectCard
-      index="01 / Featured dashboard"
-      emoji="↗"
-      title="AI Cost Efficiency & Workflow Value"
-      summary="Does AI save enough time to earn back its cost? I built this fictional business case around 240 tasks and 3,360 prompts, counting review and rework alongside token fees. Explore the live dashboard, reproducible analysis, and two learner tracks."
-      href="/projects/ai-cost-efficiency/"
-      repo="https://github.com/GlassHouse97/AI-Cost-Efficiency-Portfolio-Project"
-      live="https://ai-cost-efficiency-860922042669.us-east1.run.app"
-      liveLabel="Open dashboard"
-      accent="#79e0ba"
-      skills={["Python", "JavaScript", "Excel", "ROI analysis", "Cloud Run", "Codex"]}
-    >
-      <div slot="preview" class="ai-preview">
+    {projects.map((project, index) => (
+      <ProjectCard
+        index={`${String(index + 1).padStart(2, "0")} / ${project.category}`}
+        emoji={project.emoji}
+        title={project.title}
+        summary={project.summary}
+        href={project.caseStudy || project.repo}
+        repo={project.repo}
+        live={project.live}
+        liveLabel={project.liveLabel}
+        caseLabel={project.caseStudy ? "Read the case study" : "Explore the repository"}
+        accent={project.accent}
+        skills={project.skills}
+      >
+      <Fragment slot="preview">
+      {project.preview === "ai" ? (
+      <div class="ai-preview">
         <div class="ai-preview-top"><span>MRU / AI COST EFFICIENCY</span><small>Synthetic case study</small></div>
-        <h4>Same tool.<br /><em>Different outcomes.</em></h4>
+        <h4>Your analysis.<br /><em>Your portfolio.</em></h4>
         <div class="ai-outcomes">
-          <div class="ai-outcome positive"><span>Campaign 1</span><strong>+$4,500</strong><small>Net AI value</small><i aria-hidden="true"></i><b>100 hours saved</b></div>
-          <div class="ai-outcome negative"><span>Campaign 2</span><strong>−$4,900</strong><small>Net AI value</small><i aria-hidden="true"></i><b>70 extra hours</b></div>
+          <div class="ai-outcome positive"><span>Quick Challenge</span><strong>120</strong><small>tasks to explore</small><i aria-hidden="true"></i><b>Excel or BI</b></div>
+          <div class="ai-outcome positive"><span>Portfolio Project</span><strong>240</strong><small>tasks to explore</small><i aria-hidden="true"></i><b>Choose your tools</b></div>
         </div>
-        <p>$50/hour time value · AI costs included · not cash savings</p>
+        <p>Download the data · Follow the assignment · Build your own answer</p>
       </div>
-    </ProjectCard>
-
-    <ProjectCard
-      index="02 / Analytics"
-      emoji="📊"
-      title="Revenue Quality & Customer Profitability"
-      summary="A reproducible analysis of 3.7 million anonymized transactions, from raw annual files to a validated SQLite model and executive-ready business story."
-      href="/projects/distributor-case-study/"
-      repo="https://github.com/GlassHouse97/Distributor-Company-Case-Study"
-      live="https://github.com/GlassHouse97/Distributor-Company-Case-Study/blob/main/SOLUTION/EXECUTIVE_SUMMARY.md"
-      liveLabel="View live case study"
-      accent="#7cc8ff"
-      skills={["SQL", "Python", "pandas", "SQLite", "Business analysis"]}
-    >
-      <div slot="preview" class="chart-preview">
+      ) : project.preview === "distributor" ? (
+      <div class="chart-preview">
         <div class="preview-window">
           <div class="preview-bar"><span></span><span></span><span></span><small>revenue_quality.ipynb</small></div>
           <img src="/assets/distributor/01_revenue_margin_trends.png" alt="Revenue, gross profit, and margin trend chart from the distributor case study" width="1100" height="620" />
         </div>
       </div>
-    </ProjectCard>
-
-    <ProjectCard
-      index="03 / Application"
-      emoji="🐉"
-      title="DND and Beyond"
-      summary="A personal full-stack Python project built to demonstrate my technical range through calculated character sheets, persistent campaigns, initiative, and production deployment."
-      href="/projects/dnd-and-beyond/"
-      repo="https://github.com/GlassHouse97/DND-And-Beyond"
-      accent="#a8b4ff"
-      skills={["Python", "Reflex", "PostgreSQL", "Docker", "Cloud Run"]}
-    >
-      <div slot="preview" class="dnd-preview" aria-label="A stylized representation of the DND and Beyond campaign interface">
+      ) : project.preview === "dnd" ? (
+      <div class="dnd-preview" aria-label="A stylized representation of the DND and Beyond campaign interface">
         <div class="app-frame">
           <div class="app-top"><span>EMBERFALL</span><small>Session 12</small></div>
           <div class="app-grid">
@@ -153,25 +134,25 @@ const toolGroups = [
           </div>
         </div>
       </div>
-    </ProjectCard>
-
-    <ProjectCard
-      index="04 / Automation"
-      emoji="🎯"
-      title="Dart League Schedule & Standings"
-      summary="Another personal Python project built around a real league problem, showing how I turn messy rules and scheduling constraints into reliable tools people can actually use."
-      href="/projects/darts-league/"
-      repo="https://github.com/GlassHouse97/Darts-League-Schedule"
-      accent="#ff8f80"
-      skills={["Python", "Constraint logic", "Playwright", "JSON", "ReportLab"]}
-    >
-      <div slot="preview" class="schedule-preview">
+      ) : project.preview === "darts" ? (
+      <div class="schedule-preview">
         <div class="paper-stack paper-back"></div>
         <div class="paper-stack paper-front">
           <img src="/assets/darts/darts-schedule.png" alt="Generated darts league standings and schedule report" width="1224" height="1584" />
         </div>
       </div>
-    </ProjectCard>
+      ) : (
+        <div class="catalog-preview">
+          {project.image ? (
+            <img src={project.image} alt={project.imageAlt} loading="lazy" />
+          ) : (
+            <><span class="catalog-emoji" aria-hidden="true">{project.emoji}</span><h4>{project.title}</h4><p>{project.category}</p></>
+          )}
+        </div>
+      )}
+      </Fragment>
+      </ProjectCard>
+    ))}
   </section>
 
   <section id="about" class="section about-section">
@@ -240,6 +221,11 @@ const toolGroups = [
 </BaseLayout>
 
 <style>
+  .catalog-preview { width: 100%; padding: 2rem; text-align: center; }
+  .catalog-preview img { width: 100%; max-height: 470px; object-fit: contain; border-radius: 12px; }
+  .catalog-emoji { display: block; margin-bottom: 1.5rem; font-size: 4rem; }
+  .catalog-preview h4 { max-width: 480px; margin: 0 auto 1rem; color: var(--ink); font-size: clamp(1.8rem, 3vw, 3rem); }
+  .catalog-preview p { color: var(--ink-muted); }
   .hero {
     display: grid;
     grid-template-columns: minmax(0, 1.08fr) minmax(380px, 0.92fr);

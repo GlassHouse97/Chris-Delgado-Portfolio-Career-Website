@@ -8,6 +8,7 @@ interface Props {
   repo: string;
   live?: string;
   liveLabel?: string;
+  caseLabel?: string;
   accent: string;
   skills: string[];
 }
@@ -21,9 +22,12 @@ const {
   repo,
   live,
   liveLabel = "View live project",
+  caseLabel = "Read the case study",
   accent,
   skills,
 } = Astro.props;
+const hrefExternal = href.startsWith("https://");
+const liveExternal = live?.startsWith("https://");
 ---
 
 <article class="project-card" style={`--project-accent: ${accent}`}>
@@ -36,7 +40,7 @@ const {
       <span>{index}</span>
       <span>{emoji}</span>
     </div>
-    <h3><a href={href}>{title}</a></h3>
+    <h3><a href={href} target={hrefExternal ? "_blank" : undefined} rel={hrefExternal ? "noreferrer" : undefined}>{title}</a></h3>
     <p>{summary}</p>
     <ul class="chip-list" aria-label={`${title} technologies`}>
       {skills.map((skill) => <li class="chip">{skill}</li>)}
@@ -44,12 +48,12 @@ const {
     <div class="project-links">
       {
         live ? (
-          <a class="case-link" href={live} target="_blank" rel="noreferrer">
-            {liveLabel} <span aria-hidden="true">↗</span>
+          <a class="case-link" href={live} target={liveExternal ? "_blank" : undefined} rel={liveExternal ? "noreferrer" : undefined}>
+            {liveLabel} <span aria-hidden="true">{liveExternal ? "↗" : "→"}</span>
           </a>
         ) : (
-          <a class="case-link" href={href}>
-            Read the case study <span aria-hidden="true">→</span>
+          <a class="case-link" href={href} target={hrefExternal ? "_blank" : undefined} rel={hrefExternal ? "noreferrer" : undefined}>
+            {caseLabel} <span aria-hidden="true">{hrefExternal ? "↗" : "→"}</span>
           </a>
         )
       }
