@@ -10,13 +10,13 @@ const workflow = [
 ---
 
 <ProjectLayout
-  title="AI Cost Efficiency"
-  description="An interactive, reproducible case study of when AI earns back its cost—and when it does not. Explore token spend, Net AI value, and campaign results using a transparent fictional dataset."
+  title="AI Cost Efficiency & Workflow Value"
+  description="A personal analytics project I built with Codex assistance to examine whether AI saves enough staff time to cover its fees. Follow 240 tasks and 3,360 prompts through costs, review, rework, and campaign results in a fictional business case."
   eyebrow="Featured dashboard · Synthetic business case"
   emoji="↗"
   repo="https://github.com/GlassHouse97/AI-Cost-Efficiency-Portfolio-Project"
   accent="#79e0ba"
-  primaryHref="/ai-cost-efficiency/"
+  primaryHref="https://ai-cost-efficiency-860922042669.us-east1.run.app"
   primaryLabel="Open dashboard"
 >
   <a slot="hero-action" class="button" href="https://github.com/GlassHouse97/AI-Cost-Efficiency-Portfolio-Project" target="_blank" rel="noreferrer">Code & learner tracks <span aria-hidden="true">↗</span></a>
@@ -44,8 +44,8 @@ const workflow = [
     <div><span class="section-number">01</span><h2>The business question</h2></div>
     <div class="body-copy">
       <p>Lower token spend is useful only in the context of the work it helps deliver.</p>
-      <p>This project asks whether AI use creates enough time value to cover its cost, which work needs attention, and whether the conclusion survives uncertainty in the no-AI estimate. The dashboard brings the financial model and its assumptions into the same view.</p>
-      <div class="callout"><strong>A transparent demonstration.</strong> MRU and ChatABC are fictional. The dataset is synthetic and pricing is fixed for this exercise; it is not a current vendor price comparison. The completed dashboard includes the answers.</div>
+      <p>I wanted to look past the AI bill and ask what happened to the work itself. This project counts preparation, prompting, review, and rework, then tests whether the estimated time value still covers the fees when the no-AI baseline changes.</p>
+      <div class="callout"><strong>A fictional business case.</strong> Marketing R Us and ChatABC are fictional. All records and prices were created for this exercise. The live dashboard includes the completed analysis.</div>
     </div>
   </section>
 
@@ -73,7 +73,7 @@ const workflow = [
     <div><span class="section-number">03</span><h2>What the example shows</h2></div>
     <div class="body-copy">
       <p>Campaign 1 supports continued use. Campaign 2 needs a closer look at the workflow.</p>
-      <p>These two campaigns provide the focal comparison within the four-campaign synthetic dataset.</p>
+      <p>The four campaigns produce $2,820 of estimated net AI value in total, but that average hides very different outcomes. Campaigns 1 and 2 provide the focal comparison. Staff time explains $8,500 of their $9,400 value gap, while AI fees explain the remaining $900.</p>
       <div class="table-scroll" role="region" aria-label="Synthetic campaign results" tabindex="0">
         <table>
           <caption>Fixed fictional scenario · $50 per hour</caption>
@@ -107,7 +107,7 @@ const workflow = [
         <li><strong>Measure outcomes alongside spend.</strong> Track actual effort, review and correction time, output quality, and revenue. Revisit the no-AI baseline and keep time value separate from realized cash savings.</li>
       </ol>
       <div class="button-row">
-        <a class="button button-primary" href="/ai-cost-efficiency/">Explore the dashboard <span aria-hidden="true">→</span></a>
+        <a class="button button-primary" href="https://ai-cost-efficiency-860922042669.us-east1.run.app" target="_blank" rel="noreferrer">Explore the dashboard <span aria-hidden="true">↗</span></a>
         <a class="button" href="https://github.com/GlassHouse97/AI-Cost-Efficiency-Portfolio-Project" target="_blank" rel="noreferrer">Inspect the analysis <span aria-hidden="true">↗</span></a>
       </div>
     </div>
@@ -124,17 +124,18 @@ const workflow = [
           <h3>Quick Challenge</h3>
           <p>Use Excel to calculate costs, compare campaigns, and write a concise recommendation. A smaller scope keeps the focus on the business reasoning.</p>
           <span class="track-note">Direct download · No website account</span>
-          <a class="button" href="/ai-cost-efficiency/downloads/mru-quick-challenge.zip" download>Download quick challenge <span aria-hidden="true">↓</span></a>
+          <a class="button" href="https://raw.githubusercontent.com/GlassHouse97/AI-Cost-Efficiency-Portfolio-Project/main/DATA/TRACKS/quick-challenge/mru-quick-challenge.zip">Download quick challenge <span aria-hidden="true">↓</span></a>
         </article>
         <article class="track-card">
           <span class="mini-label">Deeper analysis · 12–16 hours</span>
           <h3>Portfolio Project</h3>
           <p>Work through the detailed data model, prompt costs, campaign economics, and sensitivity analysis. Build your own evidence and explain the decisions it supports.</p>
           <span class="track-note">Direct download · No website account</span>
-          <a class="button" href="/ai-cost-efficiency/downloads/mru-portfolio-project.zip" download>Download portfolio project <span aria-hidden="true">↓</span></a>
+          <a class="button" href="https://raw.githubusercontent.com/GlassHouse97/AI-Cost-Efficiency-Portfolio-Project/main/DATA/TRACKS/portfolio-project/mru-portfolio-project.zip">Download portfolio project <span aria-hidden="true">↓</span></a>
         </article>
       </div>
-      <p class="repo-note">The <a href="https://github.com/GlassHouse97/AI-Cost-Efficiency-Portfolio-Project" target="_blank" rel="noreferrer">GitHub repository</a> connects both learning tracks with the completed dashboard and reproducible solution.</p>
+      <p class="repo-note">The <a href="https://github.com/GlassHouse97/AI-Cost-Efficiency-Portfolio-Project" target="_blank" rel="noreferrer">GitHub repository</a> connects both learning tracks with the completed dashboard and reproducible solution. The dashboard uses HTML, CSS, and JavaScript, with Python scripts for data preparation and validation. A Node.js container serves it on Google Cloud Run.</p>
+      <p class="repo-note">I used Codex throughout the build to turn the business questions into implementation tasks, develop the analysis and dashboard, and work through validation. The project includes the assumptions, calculation code, and evidence tables so the results can be checked.</p>
     </div>
   </section>
 </ProjectLayout>

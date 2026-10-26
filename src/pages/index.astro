@@ -18,6 +18,11 @@ const toolGroups = [
     accent: "var(--purple)",
     tools: ["pytest", "unittest", "Git", "Docker", "Cloud Run", "Cloud Build", "Validation checks"],
   },
+  {
+    label: "AI + agentic workflows",
+    accent: "var(--blue)",
+    tools: ["Codex", "Agentic AI workflows", "Task planning", "Prompt design", "Code review", "AI output validation"],
+  },
 ];
 ---
 
@@ -34,7 +39,7 @@ const toolGroups = [
         awkward workflows, and real-world problems into clear answers and working tools.
       </p>
       <div class="button-row">
-        <a class="button button-primary" href="/ai-cost-efficiency/">Open AI dashboard <span aria-hidden="true">→</span></a>
+        <a class="button button-primary" href="https://ai-cost-efficiency-860922042669.us-east1.run.app" target="_blank" rel="noreferrer">Open AI dashboard <span aria-hidden="true">↗</span></a>
         <a class="button" href="/resume/chris-delgado-resume-2026.pdf" download="Chris Delgado Resume 2026.pdf">Download resume <span aria-hidden="true">↓</span></a>
         <a class="button" href="https://github.com/GlassHouse97" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
       </div>
@@ -79,14 +84,14 @@ const toolGroups = [
     <ProjectCard
       index="01 / Featured dashboard"
       emoji="↗"
-      title="AI Cost Efficiency"
-      summary="Does AI earn back its cost? Explore four fictional campaigns through token spend, Net AI value, campaign results, and a baseline sensitivity test. A completed dashboard, reproducible analysis, and two learner tracks make every result inspectable."
+      title="AI Cost Efficiency & Workflow Value"
+      summary="Does AI save enough time to earn back its cost? I built this fictional business case around 240 tasks and 3,360 prompts, counting review and rework alongside token fees. Explore the live dashboard, reproducible analysis, and two learner tracks."
       href="/projects/ai-cost-efficiency/"
       repo="https://github.com/GlassHouse97/AI-Cost-Efficiency-Portfolio-Project"
-      live="/ai-cost-efficiency/"
+      live="https://ai-cost-efficiency-860922042669.us-east1.run.app"
       liveLabel="Open dashboard"
       accent="#79e0ba"
-      skills={["Python", "SQL", "Data modeling", "Interactive dashboard", "ROI analysis"]}
+      skills={["Python", "JavaScript", "Excel", "ROI analysis", "Cloud Run", "Codex"]}
     >
       <div slot="preview" class="ai-preview">
         <div class="ai-preview-top"><span>MRU / AI COST EFFICIENCY</span><small>Synthetic case study</small></div>
@@ -198,7 +203,7 @@ const toolGroups = [
   <section id="toolbox" class="section toolbox-section shell">
     <span class="section-kicker">My toolbox</span>
     <h2 class="section-heading">Useful tools, chosen for the problem.</h2>
-    <p class="section-intro">No percentage bars. No “95% fluent in Python.” Just the things I use to get from question to answer.</p>
+    <p class="section-intro">The tools I use to get from question to answer. I'm fluent in agentic AI workflows and use Codex to plan tasks, build and review code, and check results before shipping.</p>
 
     <div class="tool-grid">
       {toolGroups.map((group) => (
@@ -757,7 +762,7 @@ const toolGroups = [
 
   .tool-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
   }
 
