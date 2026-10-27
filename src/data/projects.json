@@ -1,19 +1,5 @@
 [
   {
-    "slug": "distributor-case-study",
-    "category": "Analytics",
-    "emoji": "📊",
-    "title": "Revenue Quality & Customer Profitability",
-    "summary": "A reproducible analysis of 3.7 million anonymized transactions, from raw annual files to a validated SQLite model and executive-ready business story.",
-    "caseStudy": "/projects/distributor-case-study/",
-    "repo": "https://github.com/GlassHouse97/Distributor-Company-Case-Study",
-    "live": "https://github.com/GlassHouse97/Distributor-Company-Case-Study/blob/main/SOLUTION/EXECUTIVE_SUMMARY.md",
-    "liveLabel": "View live case study",
-    "accent": "#7cc8ff",
-    "skills": ["SQL", "Python", "pandas", "SQLite", "Business analysis"],
-    "preview": "distributor"
-  },
-  {
     "slug": "ai-cost-efficiency",
     "category": "Download & follow along",
     "emoji": "🤖",
@@ -26,6 +12,20 @@
     "accent": "#79e0ba",
     "skills": ["Excel", "Python", "SQL", "Business analysis", "AI cost analysis"],
     "preview": "ai"
+  },
+  {
+    "slug": "distributor-case-study",
+    "category": "Analytics",
+    "emoji": "📊",
+    "title": "Revenue Quality & Customer Profitability",
+    "summary": "A reproducible analysis of 3.7 million anonymized transactions, from raw annual files to a validated SQLite model and executive-ready business story.",
+    "caseStudy": "/projects/distributor-case-study/",
+    "repo": "https://github.com/GlassHouse97/Distributor-Company-Case-Study",
+    "live": "https://github.com/GlassHouse97/Distributor-Company-Case-Study/blob/main/SOLUTION/EXECUTIVE_SUMMARY.md",
+    "liveLabel": "View live case study",
+    "accent": "#7cc8ff",
+    "skills": ["SQL", "Python", "pandas", "SQLite", "Business analysis"],
+    "preview": "distributor"
   },
   {
     "slug": "dnd-and-beyond",
